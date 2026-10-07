@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>太鼓リンク — TAIKO LINK</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,155 +13,149 @@
 :root{
   --ink:#171219; --ink2:#201a26; --ink3:#292133;
   --paper:#f3e7d3; --dim:#b9ab93; --line:#3a3042;
-  --red:#d8452c; --red-hi:#f0603f; --gold:#d9a441; --blue:#5b8ec9; --pink:#e87aa0;
+  --red:#d8452c; --red-hi:#f0603f; --gold:#d9a441;
 }
-*{box-sizing:border-box; margin:0; padding:0}
+*{box-sizing:border-box;margin:0;padding:0}
 [hidden]{display:none!important}
 html,body{height:100%}
 body{
-  background:var(--ink); color:var(--paper);
-  font-family:'Zen Maru Gothic',sans-serif; font-size:14px; line-height:1.55;
-  overscroll-behavior:none; -webkit-tap-highlight-color:transparent;
+  background:var(--ink);color:var(--paper);
+  font-family:'Zen Maru Gothic',sans-serif;font-size:14px;line-height:1.5;
+  overscroll-behavior:none;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none;
 }
-.display{font-family:'DotGothic16',monospace}
-button{font:inherit; color:inherit}
-::selection{background:var(--red); color:#fff}
+input,textarea{user-select:text;-webkit-user-select:text}
+button{font:inherit;color:inherit;touch-action:manipulation}
+::selection{background:var(--red);color:#fff}
 
-/* ---------- bunting ---------- */
-#bunting{height:22px;background:var(--red);position:relative}
-#bunting::after{content:'';position:absolute;left:0;right:0;top:100%;height:11px;
-  background:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='11'%3E%3Cpath d='M0 0h26L13 11z' fill='%23d8452c'/%3E%3C/svg%3E") repeat-x;
-  background-size:26px 11px}
+#bunting{height:16px;background:var(--red);position:relative}
+#bunting::after{content:'';position:absolute;left:0;right:0;top:100%;height:9px;
+  background:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='9'%3E%3Cpath d='M0 0h26L13 9z' fill='%23d8452c'/%3E%3C/svg%3E") repeat-x;
+  background-size:26px 9px}
 
-/* ---------- home ---------- */
-#home{max-width:1080px;margin:0 auto;padding:26px 18px 60px}
-.hero{display:flex;align-items:center;gap:26px;padding:26px 0 20px;flex-wrap:wrap}
-.hero-drum{position:relative;width:148px;height:148px;flex:none;cursor:pointer;user-select:none;touch-action:manipulation}
+#home{max-width:760px;margin:0 auto;padding:20px 16px 110px}
+.hero{display:flex;align-items:center;gap:18px;padding:18px 0 14px}
+.hero-drum{position:relative;width:92px;height:92px;flex:none;cursor:pointer;touch-action:manipulation}
 .drumface{position:absolute;inset:0;border-radius:50%;background:var(--paper);
-  border:11px solid var(--red);box-shadow:0 0 0 6px #8e2b1c, 7px 9px 0 rgba(0,0,0,.45);
+  border:8px solid var(--red);box-shadow:0 0 0 4px #8e2b1c,5px 6px 0 rgba(0,0,0,.45);
   display:grid;place-items:center;transition:transform .08s}
-.hero-drum:active .drumface{transform:scale(.94)}
-.drumface b{font-family:'DotGothic16';font-size:40px;color:var(--red);font-weight:400}
-.drumface::after{content:'';position:absolute;inset:16%;border:3px solid var(--red);border-radius:50%;opacity:.85}
-.hero h1{font-family:'DotGothic16';font-weight:400;font-size:clamp(30px,5vw,46px);letter-spacing:2px;line-height:1.1}
-.hero h1 span{display:block;font-size:15px;color:var(--gold);letter-spacing:5px;margin-top:6px}
-.hero p{color:var(--dim);max-width:520px;margin-top:10px;font-size:13px}
-.howto{display:flex;gap:18px;flex-wrap:wrap;color:var(--dim);font-size:12px;padding:10px 2px 22px;border-bottom:1px solid var(--line);margin-bottom:22px}
-.howto b{font-family:'DotGothic16';color:var(--gold);margin-right:6px;font-weight:400}
+.hero-drum:active .drumface{transform:scale(.93)}
+.drumface b{font-family:'DotGothic16';font-size:26px;color:var(--red);font-weight:400}
+.hero h1{font-family:'DotGothic16';font-weight:400;font-size:clamp(24px,5.4vw,34px);letter-spacing:2px;line-height:1.05}
+.hero h1 span{display:block;font-size:11px;color:var(--gold);letter-spacing:4px;margin-top:4px}
+.hero p{color:var(--dim);font-size:12px;margin-top:5px}
 
-.roles{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:22px}
+.roles{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
 .role{position:relative;overflow:hidden;border:2px solid var(--line);background:var(--ink2);
-  padding:16px 18px;cursor:pointer;text-align:left;transition:border-color .15s, transform .1s}
+  padding:11px 14px;cursor:pointer;text-align:left;transition:border-color .15s}
 .role:hover{border-color:var(--dim)}
 .role.sel{border-color:var(--red)}
-.role.sel::before{content:'';position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--red)}
-.role .kanji{position:absolute;right:-8px;bottom:-30px;font-family:'DotGothic16';font-size:110px;opacity:.06;pointer-events:none}
-.role h2{font-family:'DotGothic16';font-weight:400;font-size:21px;letter-spacing:1px}
-.role h2 small{font-size:11px;color:var(--gold);letter-spacing:3px;display:block;margin-bottom:2px}
-.role p{color:var(--dim);font-size:12px;margin-top:6px}
-.role svg{position:absolute;top:14px;right:14px;color:var(--red);opacity:.9}
+.role.sel::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--red)}
+.role h2{font-family:'DotGothic16';font-weight:400;font-size:16px;letter-spacing:1px}
+.role h2 small{font-size:10px;color:var(--gold);letter-spacing:2px;display:block;margin-bottom:1px}
+.role p{color:var(--dim);font-size:11px;margin-top:3px;line-height:1.4}
 
-.panel-grid{display:grid;grid-template-columns:1fr 340px;gap:18px;align-items:start}
-@media(max-width:900px){.panel-grid{grid-template-columns:1fr}}
-.col-main{min-width:0}
-.card{border:2px solid var(--line);background:var(--ink2);padding:16px;box-shadow:6px 6px 0 rgba(0,0,0,.35);margin-bottom:16px}
-.card h3{font-family:'DotGothic16';font-weight:400;color:var(--gold);letter-spacing:1px;font-size:14px;
-  display:flex;align-items:center;gap:8px;margin-bottom:12px}
+.card{border:2px solid var(--line);background:var(--ink2);padding:13px 14px;box-shadow:5px 5px 0 rgba(0,0,0,.35);margin-bottom:14px}
+.card h3{font-family:'DotGothic16';font-weight:400;color:var(--gold);letter-spacing:1px;font-size:13px;
+  display:flex;align-items:center;gap:8px;margin-bottom:10px}
 .card h3 .sp{flex:1}
 .dot{width:9px;height:9px;border-radius:50%;background:#5c5464;flex:none}
 .dot.wait{background:var(--gold)} .dot.on{background:#63c76a}
 
 .btn{font-family:'DotGothic16';font-weight:400;background:transparent;border:2px solid var(--paper);color:var(--paper);
-  padding:9px 16px;cursor:pointer;letter-spacing:1px;display:inline-flex;align-items:center;gap:8px;
-  transition:background .12s,color .12s,transform .06s;font-size:14px}
+  padding:8px 14px;cursor:pointer;letter-spacing:1px;display:inline-flex;align-items:center;gap:7px;
+  transition:background .12s,color .12s;font-size:13px}
 .btn:hover{background:var(--paper);color:var(--ink)}
 .btn:active{transform:translate(2px,2px)}
 .btn.primary{background:var(--red);border-color:var(--red);color:#fff}
 .btn.primary:hover{background:var(--red-hi);border-color:var(--red-hi);color:#fff}
 .btn:disabled{opacity:.35;pointer-events:none}
-.btn.big{width:100%;justify-content:center;font-size:17px;padding:13px}
 .btn.ghost{border-color:var(--line);color:var(--dim)}
 .btn.ghost:hover{background:var(--ink3);color:var(--paper)}
-.iconb{padding:8px}
 
-.drop{border:2px dashed var(--line);padding:26px 18px;text-align:center;color:var(--dim);transition:.15s;cursor:pointer}
-.drop.over{border-color:var(--red);color:var(--paper);background:rgba(216,69,44,.07)}
-.drop .ic{color:var(--red);margin-bottom:8px}
-.drop p{font-size:13px}
-.drop .row{display:flex;gap:10px;justify-content:center;margin-top:14px;flex-wrap:wrap}
+.ghbar{display:flex;gap:8px}
+.ghbar input{flex:1;min-width:0;background:var(--ink);border:2px solid var(--line);color:var(--paper);
+  padding:9px 11px;font-size:13px}
+.ghbar input:focus{outline:none;border-color:var(--red)}
+.ghbar input::placeholder{color:#6d6275}
+#ghStatus{font-size:12px;color:var(--dim);margin-top:8px;min-height:16px}
+#ghStatus.bad{color:#e07a68} #ghStatus.good{color:#63c76a}
 
-.song{border:2px solid var(--line);background:var(--ink2);padding:13px 15px;margin-bottom:12px}
-.song .t{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
-.song .t b{font-family:'DotGothic16';font-weight:400;font-size:16px;letter-spacing:.5px}
-.song .t .chip{font-size:10px;letter-spacing:2px;border:1px solid var(--line);color:var(--dim);padding:1px 7px}
-.song .wave{font-size:11px;color:var(--dim);margin:3px 0 10px}
-.song .wave i{font-style:normal;color:#63c76a}
-.song .wave i.none{color:var(--gold)}
-.courses{display:flex;gap:8px;flex-wrap:wrap}
-.course-btn{display:inline-flex;align-items:center;gap:8px;border:2px solid var(--line);background:transparent;
-  padding:6px 10px;cursor:pointer;font-size:12px;color:var(--paper)}
+.shead{display:flex;align-items:baseline;gap:10px;margin:20px 2px 10px}
+.shead h2{font-family:'DotGothic16';font-weight:400;font-size:16px;letter-spacing:2px}
+.shead span{font-size:11px;color:var(--dim)}
+
+.song{border:2px solid var(--line);background:var(--ink2);padding:11px 13px;margin-bottom:10px}
+.song .t{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.song .t b{font-family:'DotGothic16';font-weight:400;font-size:16px;letter-spacing:.5px;flex:1;min-width:120px}
+.chip{font-size:10px;letter-spacing:1px;border:1px solid var(--line);color:var(--dim);padding:1px 7px;white-space:nowrap}
+.song .sub{font-size:11px;color:var(--dim);margin:2px 0 9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.song .sub i{font-style:normal;color:#63c76a}
+.song .sub i.none{color:var(--gold)}
+.courses{display:flex;gap:7px;flex-wrap:wrap}
+.course-btn{display:inline-flex;align-items:center;gap:7px;border:2px solid var(--line);background:transparent;
+  padding:6px 9px;cursor:pointer;font-size:12px;color:var(--paper)}
 .course-btn:hover{border-color:var(--dim)}
-.course-btn.sel{border-color:var(--red);background:rgba(216,69,44,.12)}
+.course-btn.sel{border-color:var(--red);background:rgba(216,69,44,.14)}
+.course-btn.gold{border-color:var(--gold);color:var(--gold)}
+.course-btn.gold:hover{background:rgba(217,164,65,.12)}
 .badge{font-family:'DotGothic16';color:#fff;padding:1px 8px;font-size:11px;letter-spacing:1px}
-.stars{color:var(--gold);letter-spacing:1px;font-size:11px}
-.del{margin-left:auto;background:none;border:none;color:var(--dim);cursor:pointer;padding:2px}
+.stars{color:var(--gold);font-size:10px;letter-spacing:1px}
+.del{background:none;border:none;color:#6d6275;cursor:pointer;padding:2px}
 .del:hover{color:var(--red-hi)}
+.empty{color:var(--dim);font-size:12px;padding:8px 2px}
 
-#startBar{position:sticky;bottom:12px;border:2px solid var(--red);background:#241a1c;box-shadow:6px 6px 0 rgba(0,0,0,.45);
-  padding:12px 14px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;z-index:5}
-#startBar .info{flex:1;min-width:150px}
-#startBar .info b{font-family:'DotGothic16';font-weight:400;font-size:15px;display:block}
+#startBar{position:fixed;left:50%;transform:translateX(-50%);bottom:12px;width:min(728px,calc(100% - 24px));
+  border:2px solid var(--red);background:#241a1c;box-shadow:5px 5px 0 rgba(0,0,0,.45);
+  padding:10px 13px;display:flex;gap:12px;align-items:center;z-index:5}
+#startBar .info{flex:1;min-width:0}
+#startBar .info b{font-family:'DotGothic16';font-weight:400;font-size:14px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #startBar .info span{font-size:11px;color:var(--dim)}
 
-.status{font-size:12px;color:var(--dim);margin-bottom:12px;min-height:18px}
-.seg{display:flex;border:2px solid var(--line);margin-bottom:12px}
+.status{font-size:12px;color:var(--dim);margin-bottom:10px;min-height:16px}
+.seg{display:flex;border:2px solid var(--line);margin-bottom:10px}
 .seg button{flex:1;background:transparent;border:none;padding:8px 4px;cursor:pointer;font-family:'DotGothic16';
-  font-size:12px;letter-spacing:1px;color:var(--dim)}
+  font-size:11px;letter-spacing:1px;color:var(--dim)}
 .seg button.sel{background:var(--paper);color:var(--ink)}
-.hint{font-size:12px;color:var(--dim);border-left:3px solid var(--gold);padding:6px 10px;background:var(--ink3);margin-bottom:12px}
-textarea{width:100%;min-height:74px;background:var(--ink);border:2px solid var(--line);color:var(--paper);
-  font-size:10px;padding:8px;resize:vertical;font-family:monospace;margin-bottom:10px}
+.hint{font-size:11px;color:var(--dim);border-left:3px solid var(--gold);padding:5px 9px;background:var(--ink3);margin-bottom:10px}
+textarea{width:100%;min-height:66px;background:var(--ink);border:2px solid var(--line);color:var(--paper);
+  font-size:10px;padding:8px;resize:vertical;font-family:monospace;margin-bottom:9px}
 textarea:focus{outline:none;border-color:var(--red)}
-.flow .btn{width:100%;justify-content:center;margin-bottom:10px}
+.flow .btn{width:100%;justify-content:center;margin-bottom:9px}
 
-.opt{display:grid;grid-template-columns:118px 1fr 58px;gap:10px;align-items:center;margin-bottom:10px;font-size:12px;color:var(--dim)}
-.opt b{font-family:'DotGothic16';font-weight:400;color:var(--paper);text-align:right;font-size:12px}
+.opt{display:grid;grid-template-columns:104px 1fr 54px;gap:9px;align-items:center;margin-bottom:9px;font-size:12px;color:var(--dim)}
+.opt b{font-family:'DotGothic16';font-weight:400;color:var(--paper);text-align:right;font-size:11px}
 input[type=range]{accent-color:var(--red);width:100%;height:20px}
-.tog{display:flex;align-items:center;gap:10px;margin-bottom:10px;cursor:pointer;font-size:12px;color:var(--dim);user-select:none}
+.tog{display:flex;align-items:center;gap:9px;margin-bottom:9px;cursor:pointer;font-size:12px;color:var(--dim)}
 .tog input{display:none}
-.tog i{width:34px;height:18px;border:2px solid var(--line);position:relative;flex:none;transition:.15s}
-.tog i::after{content:'';position:absolute;top:1px;left:1px;width:12px;height:12px;background:var(--dim);transition:.15s}
+.tog i{width:32px;height:17px;border:2px solid var(--line);position:relative;flex:none;transition:.15s}
+.tog i::after{content:'';position:absolute;top:1px;left:1px;width:11px;height:11px;background:var(--dim);transition:.15s}
 .tog input:checked + i{border-color:var(--red)}
-.tog input:checked + i::after{left:17px;background:var(--red)}
+.tog input:checked + i::after{left:16px;background:var(--red)}
 .tog:hover{color:var(--paper)}
-.subhead{font-size:10px;letter-spacing:3px;color:var(--gold);margin:14px 0 8px;font-family:'DotGothic16'}
+.localrow{display:flex;gap:8px;margin-top:10px}
+kbd{border:1px solid var(--line);padding:0 5px;font-family:'DotGothic16';font-size:11px;color:var(--dim)}
+footer{color:#6d6275;font-size:11px;margin-top:26px;text-align:center}
 
-#gCard{border-color:var(--gold)}
-#gCard .t b{font-family:'DotGothic16';font-weight:400;font-size:17px;display:block}
-#gCard .meta{color:var(--dim);font-size:12px;margin-top:4px}
-footer{color:#6d6275;font-size:11px;margin-top:30px;text-align:center}
-
-/* ---------- game ---------- */
 #game{position:fixed;inset:0;background:var(--ink)}
 #cv{position:absolute;inset:0;width:100%;height:100%;touch-action:none;display:block}
 #hud{position:absolute;top:0;left:0;right:0;display:flex;align-items:center;gap:10px;padding:10px 12px;pointer-events:none}
-#hudTitle{font-family:'DotGothic16';font-size:13px;letter-spacing:1px;color:var(--paper);opacity:.85;
-  max-width:46vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#hudTitle{font-family:'DotGothic16';font-size:13px;letter-spacing:1px;opacity:.85;
+  max-width:44vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 #hudBadge{font-family:'DotGothic16';font-size:11px;color:#fff;padding:1px 8px}
 #hud .sp{flex:1}
 #hud .btn{pointer-events:auto;background:rgba(23,18,25,.75)}
 #pingChip{font-family:'DotGothic16';font-size:11px;color:var(--dim);background:rgba(23,18,25,.75);
-  border:1px solid var(--line);padding:5px 9px;pointer-events:none}
+  border:1px solid var(--line);padding:5px 9px}
 .overlay{position:absolute;inset:0;background:rgba(12,9,14,.82);display:grid;place-items:center;padding:18px;z-index:10}
 .ov-card{border:2px solid var(--paper);background:var(--ink2);box-shadow:8px 8px 0 rgba(0,0,0,.5);
-  padding:26px 28px;max-width:520px;width:100%;max-height:92vh;overflow:auto}
-.ov-card h2{font-family:'DotGothic16';font-weight:400;font-size:22px;letter-spacing:2px;margin-bottom:6px}
-.ov-card h2 small{color:var(--gold);font-size:12px;letter-spacing:4px;display:block}
+  padding:24px 26px;max-width:500px;width:100%;max-height:92vh;overflow:auto}
+.ov-card h2{font-family:'DotGothic16';font-weight:400;font-size:21px;letter-spacing:2px;margin-bottom:4px}
+.ov-card h2 small{color:var(--gold);font-size:11px;letter-spacing:4px;display:block}
 .ov-card .btn{margin-top:10px}
 .ov-card .btn+.btn{margin-left:10px}
-.res-grid{display:flex;gap:26px;align-items:center;margin:14px 0}
-.rank{font-family:'DotGothic16';font-size:86px;line-height:1;color:var(--dim);border:3px solid var(--line);
-  width:130px;height:130px;display:grid;place-items:center;flex:none}
+.res-grid{display:flex;gap:24px;align-items:center;margin:14px 0}
+.rank{font-family:'DotGothic16';font-size:76px;line-height:1;color:var(--dim);border:3px solid var(--line);
+  width:118px;height:118px;display:grid;place-items:center;flex:none}
 .rank.gold{color:var(--gold);border-color:var(--gold)}
 .stats{flex:1;min-width:0}
 .stats .row{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding:5px 0;font-size:13px}
@@ -168,138 +164,117 @@ footer{color:#6d6275;font-size:11px;margin-top:30px;text-align:center}
 .fcbadge{display:inline-block;font-family:'DotGothic16';color:var(--ink);background:var(--gold);padding:2px 12px;
   font-size:13px;letter-spacing:2px;margin:4px 0 6px}
 
-/* ---------- toast ---------- */
 #toasts{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:99;display:flex;flex-direction:column;gap:8px;align-items:center;pointer-events:none}
 .toast{background:var(--ink2);border:2px solid var(--line);border-left:4px solid var(--gold);color:var(--paper);
-  padding:9px 16px;font-size:13px;box-shadow:5px 5px 0 rgba(0,0,0,.4);max-width:88vw;transition:opacity .3s, transform .3s}
+  padding:8px 15px;font-size:13px;box-shadow:5px 5px 0 rgba(0,0,0,.4);max-width:88vw;transition:opacity .3s,transform .3s}
 .toast.good{border-left-color:#63c76a} .toast.bad{border-left-color:var(--red)}
 .toast.out{opacity:0;transform:translateY(8px)}
 
-/* hero drum ripples */
 .ripple{position:absolute;border:2px solid var(--red);border-radius:50%;pointer-events:none;animation:rip .5s ease-out forwards}
 @keyframes rip{from{width:12px;height:12px;opacity:.9}to{width:150px;height:150px;opacity:0}}
 .fpop{position:absolute;font-family:'DotGothic16';color:var(--gold);font-size:20px;pointer-events:none;animation:pup .6s ease-out forwards;white-space:nowrap}
 @keyframes pup{from{transform:translate(-50%,0);opacity:1}to{transform:translate(-50%,-38px);opacity:0}}
-kbd{border:1px solid var(--line);padding:0 5px;font-family:'DotGothic16';font-size:11px;color:var(--dim)}
 </style>
 </head>
 <body>
 
-<!-- ======================= HOME ======================= -->
 <div id="bunting"></div>
 <main id="home">
   <header class="hero">
     <div class="hero-drum" id="heroDrum"><div class="drumface"><b>面</b></div></div>
     <div>
       <h1>太鼓リンク<span>TAIKO LINK</span></h1>
-      <p>A local .tja / .osu(taiko) player. Play classic drum-style taiko on one device — and mirror the very same
-      gameplay live as a 4-key VSRG on another window or another computer. Everything runs in your browser; nothing is uploaded.</p>
+      <p>.tja / .osu / .osz player — mirrored live as 4K on a second screen.</p>
     </div>
   </header>
 
-  <div class="howto">
-    <span><b>1</b>load a chart + its audio</span>
-    <span><b>2</b>pick a role below</span>
-    <span><b>3</b>link the mirror (auto, or paste a code between devices)</span>
-    <span><b>4</b>start — the 4K window plays itself in sync</span>
-  </div>
-
   <nav class="roles">
     <button class="role sel" id="roleHost">
-      <span class="kanji">太鼓</span>
       <h2><small>PLAY HERE</small>太鼓プレイヤー</h2>
-      <p>Classic taiko gameplay. Tap the drum face for ドン, the rim for カッ. This device is the clock and sends everything to the mirror.</p>
+      <p>Drum gameplay. Runs the song and drives the mirror.</p>
     </button>
     <button class="role" id="roleGuest">
-      <span class="kanji">四鍵</span>
       <h2><small>MIRROR HERE</small>4K ミラー</h2>
-      <p>Shows the same chart as a 4-lane VSRG. Lane presses follow the taiko gameplay automatically — or take over and play it yourself.</p>
+      <p>4-lane view of the same chart. Plays itself in sync — or you play it.</p>
     </button>
   </nav>
 
-  <!-- ===== HOST PANEL ===== -->
-  <section id="hostPanel" class="panel-grid">
-    <div class="col-main">
-      <div class="drop" id="drop">
-        <div class="ic" id="dropIc"></div>
-        <p>Drop a <b>.tja</b> or <b>.osu</b> (taiko) chart here — plus its audio (mp3 / ogg / wav…), or a whole song folder.<br>
-        No audio? The chart still plays with a metronome.</p>
-        <div class="row">
-          <button class="btn" id="btnFiles">add files</button>
-          <button class="btn ghost" id="btnDir">add folder</button>
-        </div>
-        <input type="file" id="fileIn" multiple hidden accept=".tja,.osu,.mp3,.ogg,.wav,.m4a,.flac,.aac,.opus,audio/*">
+  <!-- ===== HOST ===== -->
+  <section id="hostPanel">
+    <div class="card">
+      <h3>GITHUB SONGS</h3>
+      <div class="ghbar">
+        <input id="ghIn" placeholder="owner/repo — .tja / .osu / .osz inside" enterkeyhint="go" autocomplete="off" spellcheck="false">
+        <button class="btn primary" id="btnGh">LOAD</button>
+      </div>
+      <div id="ghStatus"></div>
+      <div class="localrow">
+        <button class="btn ghost" id="btnFiles">local files</button>
+        <button class="btn ghost" id="btnDir">local folder</button>
+        <input type="file" id="fileIn" multiple hidden accept=".tja,.osu,.osz,.zip,.mp3,.ogg,.wav,.m4a,.flac,.aac,.opus,audio/*">
         <input type="file" id="dirIn" webkitdirectory multiple hidden>
       </div>
-      <div id="library"></div>
-      <div id="startBar" hidden>
-        <div class="info"><b id="sbTitle"></b><span id="sbSub"></span></div>
-        <button class="btn primary" id="btnStart">START</button>
+    </div>
+
+    <div class="shead"><h2>曲 — SONG SELECT</h2><span id="songCount"></span></div>
+    <div id="library"></div>
+
+    <div class="card" style="margin-top:16px">
+      <h3>MIRROR LINK <span class="sp"></span><span class="dot" id="dotHost"></span></h3>
+      <div class="status" id="linkStatus">not linked — solo play works fine</div>
+      <div class="seg" id="segHost">
+        <button type="button" data-lm="bc" class="sel">SAME DEVICE</button>
+        <button type="button" data-lm="rtc">CROSS-DEVICE</button>
+      </div>
+      <div class="lm-bc">
+        <div class="hint">Open a second window here, pick 4K ミラー — connects by itself.</div>
+      </div>
+      <div class="lm-rtc flow" hidden>
+        <div class="hint">Exchange two short codes with the other device (needs internet).</div>
+        <button class="btn" id="btnInvite">1 · CREATE INVITE CODE</button>
+        <textarea id="inviteOut" readonly hidden></textarea>
+        <button class="btn ghost" id="copyInvite" hidden>copy invite code</button>
+        <textarea id="answerIn" placeholder="2 · paste the reply code here"></textarea>
+        <button class="btn" id="btnAccept">3 · LINK</button>
       </div>
     </div>
-    <aside>
-      <div class="card">
-        <h3 id="lkIcoH">MIRROR LINK <span class="sp"></span><span class="dot" id="dotHost"></span></h3>
-        <div class="status" id="linkStatus">no mirror connected — solo play works fine too</div>
-        <div class="seg" id="segHost">
-          <button data-lm="bc" class="sel">SAME DEVICE</button>
-          <button data-lm="rtc">CROSS-DEVICE</button>
-        </div>
-        <div class="lm-bc">
-          <div class="hint">Open this page in a second window on this computer and choose 「4K ミラー」 there. It connects on its own.</div>
-        </div>
-        <div class="lm-rtc flow" hidden>
-          <div class="hint">Serverless WebRTC: exchange one short code each way (chat, e-mail…). Both devices need internet for the handshake.</div>
-          <button class="btn" id="btnInvite">1 · CREATE INVITE CODE</button>
-          <textarea id="inviteOut" readonly hidden></textarea>
-          <button class="btn ghost" id="copyInvite" hidden>copy invite code</button>
-          <textarea id="answerIn" placeholder="2 · paste the reply code from the mirror here"></textarea>
-          <button class="btn" id="btnAccept">3 · LINK</button>
-        </div>
-      </div>
-      <div class="card"><h3>OPTIONS</h3><div id="optHost"></div></div>
-    </aside>
+
+    <div class="card"><h3>OPTIONS</h3><div id="optHost"></div></div>
   </section>
 
-  <!-- ===== GUEST PANEL ===== -->
+  <!-- ===== GUEST ===== -->
   <section id="guestPanel" hidden>
-    <div class="panel-grid" style="grid-template-columns:1fr 340px">
-      <div>
-        <div class="card" id="gCard" hidden>
-          <h3>SONG RECEIVED <span class="sp"></span><span class="dot on"></span></h3>
-          <div class="t"><b id="gTitle"></b></div>
-          <div class="meta" id="gMeta"></div>
-        </div>
-        <div class="card">
-          <h3>STATUS</h3>
-          <div class="status" id="gWait">waiting for a host…</div>
-          <div class="hint">Keep this window open. When the host starts a song, the 4K view takes over automatically.<br><br>
-          Keys <kbd>D</kbd> <kbd>F</kbd> <kbd>J</kbd> <kbd>K</kbd> flash the lanes. The host can allow them to actually control the game.</div>
-        </div>
-      </div>
-      <aside>
-        <div class="card">
-          <h3>MIRROR LINK <span class="sp"></span><span class="dot" id="dotGuest"></span></h3>
-          <div class="status" id="linkStatusG">waiting…</div>
-          <div class="seg" id="segGuest">
-            <button data-lm="bc" class="sel">SAME DEVICE</button>
-            <button data-lm="rtc">CROSS-DEVICE</button>
-          </div>
-          <div class="lm-bc"><div class="hint">Stay on this page — a host window on this computer connects automatically.</div></div>
-          <div class="lm-rtc flow" hidden>
-            <textarea id="inviteIn" placeholder="1 · paste the invite code from the host"></textarea>
-            <button class="btn" id="btnReply">2 · GENERATE REPLY</button>
-            <textarea id="replyOut" readonly hidden></textarea>
-            <button class="btn ghost" id="copyReply" hidden>copy reply code</button>
-          </div>
-        </div>
-        <div class="card"><h3>OPTIONS</h3><div id="optGuest"></div></div>
-      </aside>
+    <div class="card">
+      <h3>STATUS <span class="sp"></span><span class="dot" id="dotGuest"></span></h3>
+      <div class="status" id="gWait">waiting for a host — keep this tab open</div>
+      <div class="status" id="linkStatusG" style="margin:0"></div>
     </div>
+    <div class="card">
+      <h3>MIRROR LINK</h3>
+      <div class="seg" id="segGuest">
+        <button type="button" data-lm="bc" class="sel">SAME DEVICE</button>
+        <button type="button" data-lm="rtc">CROSS-DEVICE</button>
+      </div>
+      <div class="lm-bc"><div class="hint">Stay here — a host window on this computer connects automatically.</div></div>
+      <div class="lm-rtc flow" hidden>
+        <textarea id="inviteIn" placeholder="1 · paste the invite code from the host"></textarea>
+        <button class="btn" id="btnReply">2 · GENERATE REPLY</button>
+        <textarea id="replyOut" readonly hidden></textarea>
+        <button class="btn ghost" id="copyReply" hidden>copy reply code</button>
+      </div>
+    </div>
+    <div class="card"><h3>OPTIONS</h3><div id="optGuest"></div></div>
+    <div class="hint">Keys <kbd>D</kbd> <kbd>F</kbd> <kbd>J</kbd> <kbd>K</kbd> flash the lanes. The host can allow them to actually play.</div>
   </section>
 
-  <footer>runs 100% locally · charts &amp; audio never leave your devices · same-device linking needs both windows on the same address (use a tiny local server like <span style="color:var(--dim)">python -m http.server</span> if it won't connect)</footer>
+  <footer>runs locally · charts stream from your github repo</footer>
 </main>
+
+<!-- START BAR (restored — its absence broke the previous build) -->
+<div id="startBar" hidden>
+  <div class="info"><b id="sbTitle"></b><span id="sbSub"></span></div>
+  <button class="btn primary" id="btnStart">START</button>
+</div>
 
 <!-- ======================= GAME ======================= -->
 <div id="game" hidden>
@@ -308,15 +283,15 @@ kbd{border:1px solid var(--line);padding:0 5px;font-family:'DotGothic16';font-si
     <span id="hudTitle"></span><span id="hudBadge" class="badge"></span>
     <span class="sp"></span>
     <span id="pingChip" hidden>— ms</span>
-    <button class="btn iconb" id="btnView" title="switch view"></button>
-    <button class="btn iconb" id="btnPause" title="pause"></button>
+    <button class="btn" id="btnView" title="switch view"></button>
+    <button class="btn" id="btnPause" title="pause"></button>
   </div>
 
   <div class="overlay" id="ovPause" hidden>
     <div class="ov-card">
       <h2>一時停止<small>PAUSE</small></h2>
       <div id="pauseOpts"></div>
-      <div style="margin-top:14px">
+      <div style="margin-top:12px">
         <button class="btn primary" id="btnResume">つづける</button>
         <button class="btn" id="btnRetry">リトライ</button>
         <button class="btn ghost" id="btnQuit">曲選択へ</button>
@@ -332,13 +307,21 @@ kbd{border:1px solid var(--line);padding:0 5px;font-family:'DotGothic16';font-si
 <script>
 'use strict';
 /* ============================================================
-   TAIKO LINK — single-file taiko player + 4K VSRG mirror
+   TAIKO LINK — taiko player + 4K VSRG mirror (single file)
    ============================================================ */
 
-// ---------- tiny utils ----------
+// visible error reporting — a script error can no longer fail silently
+let _lastErr=0;
+window.addEventListener('error',e=>{
+  if(performance.now()-_lastErr<800)return;_lastErr=performance.now();
+  try{toast('⚠ '+e.message,'bad',4000);}catch(_){}
+});
+
+// ---------- utils ----------
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const clamp=(v,a,b)=>v<a?a:v>b?b:v;
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+function esc(s){return (''+s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
 function toast(msg,kind='',ms=2600){
   const d=document.createElement('div'); d.className='toast '+kind; d.textContent=msg;
   $('#toasts').append(d);
@@ -355,23 +338,21 @@ function copyText(t){
 }
 function fallbackCopy(t){
   const ta=document.createElement('textarea'); ta.value=t; document.body.append(ta);
-  ta.select(); try{document.execCommand('copy');toast('copied','good');}catch(e){toast('copy failed — select manually','bad');}
+  ta.select(); try{document.execCommand('copy');toast('copied','good');}catch(e){toast('copy failed','bad');}
   ta.remove();
 }
+// safe wiring helpers — a missing element logs a warning instead of killing init
+function on(id,ev,fn){const e=document.getElementById(id);if(!e){console.error('missing #'+id);return;}e.addEventListener(ev,fn);}
+function setHTML(id,h){const e=document.getElementById(id);if(!e){console.error('missing #'+id);return;}e.innerHTML=h;}
 
 // ---------- icons ----------
 const ICONS={
-  play:'<path d="M8 5v14l11-7z" fill="currentColor" stroke="none"/>',
   pause:'<path d="M8 5h3v14H8zM14 5h3v14h-3z" fill="currentColor" stroke="none"/>',
   drum:'<circle cx="12" cy="13" r="7.5"/><circle cx="12" cy="13" r="3"/><path d="M4.5 5.5L9 9.5M19.5 5.5L15 9.5"/>',
   bars:'<path d="M5 4v16M10 4v16M15 4v16M20 4v16"/>',
-  link:'<circle cx="5" cy="12" r="2.5"/><circle cx="19" cy="12" r="2.5"/><path d="M7.5 12h9"/>',
-  swap:'<path d="M4 8h12l-3-3M20 16H8l3 3"/>',
   copy:'<rect x="9" y="9" width="11" height="11" rx="1"/><path d="M5 15V5a1 1 0 0 1 1-1h9"/>',
   x:'<path d="M6 6l12 12M18 6L6 18"/>',
-  up:'<path d="M12 16V5M6 10l6-6 6 6M5 20h14"/>',
   folder:'<path d="M3 6h6l2 2h10v11H3z"/>',
-  sliders:'<path d="M4 8h9M19 8h1M4 16h3M13 16h7"/><circle cx="16" cy="8" r="2"/><circle cx="10" cy="16" r="2"/>',
   cols:'<rect x="3" y="4" width="8" height="16" rx="1"/><rect x="13" y="4" width="8" height="16" rx="1"/>'
 };
 function ic(n,s=18){return `<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${ICONS[n]}</svg>`;}
@@ -462,7 +443,7 @@ const A={
 // ---------- music playback ----------
 const Music={
   src:null,
-  schedule(t0,cut,aOffS){ // wall(chartTime c) = t0 + c + aOffS  (all seconds)
+  schedule(t0,cut,aOffS){
     if(!Host.audioBuf)return;
     this.stop(); A.ensure();
     const src=A.ctx.createBufferSource(); src.buffer=Host.audioBuf; src.connect(A.musGain);
@@ -479,7 +460,6 @@ const Music={
     this.src=null;
   }
 };
-// metronome fallback when there is no audio file
 const Metro={
   timer:null,next:0,bpm:120,
   start(bpm){this.stop();this.bpm=bpm;this.next=0;this.timer=setInterval(()=>this.tick(),60);},
@@ -498,13 +478,12 @@ const Metro={
   stop(){if(this.timer){clearInterval(this.timer);this.timer=null;}}
 };
 
-// ---------- speed map (classic taiko scroll: px ∝ bpm × scroll) ----------
+// ---------- scroll speed ----------
 function makeSpeed(ev,K){
   const n=ev.length,T=new Float64Array(n),F=new Float64Array(n),C=new Float64Array(n);
   for(let i=0;i<n;i++){T[i]=ev[i][0];F[i]=ev[i][1];}
   for(let i=1;i<n;i++)C[i]=C[i-1]+(T[i]-T[i-1])*K*F[i-1];
-  return {
-    K,
+  return {K,
     d(t){
       if(n===0)return 0;
       if(t<=T[0])return C[0]+(t-T[0])*K*F[0];
@@ -512,8 +491,7 @@ function makeSpeed(ev,K){
       let lo=0,hi=n-1;
       while(hi-lo>1){const m=(lo+hi)>>1; if(T[m]<=t)lo=m; else hi=m;}
       return C[lo]+(t-T[lo])*K*F[lo];
-    }
-  };
+    }};
 }
 function genBeats(bpmTl,dur){
   const out=[];
@@ -532,24 +510,107 @@ const KCOL={don:'don',ka:'ka',donB:'don',kaB:'ka'};
 const NOTE={don:{lane:0,c:'#e2452c'},ka:{lane:1,c:'#4a7fc9'},donB:{lane:2,c:'#e2452c'},kaB:{lane:3,c:'#4a7fc9'}};
 const CCOL=['#57a05a','#d9a441','#e0742f','#d8452c','#9b59d0','#7c8894'];
 const CNAMES=['かんたん','ふつう','むずかしい','おに','おに裏','OTHER'];
+const AEXT=/\.(mp3|ogg|wav|m4a|flac|aac|opus)$/i;
 const PERF=48, GOOD=112;
+
+/* ============================================================
+   ZIP READER — for .osz / .zip song archives
+   ============================================================ */
+const Zip={
+  async read(u8){
+    if(!window.DecompressionStream)throw new Error('this browser cannot unzip (no DecompressionStream)');
+    const dv=new DataView(u8.buffer,u8.byteOffset,u8.byteLength);
+    // locate End Of Central Directory from the back
+    let i=u8.length-22;
+    const min=Math.max(0,u8.length-22-65535);
+    while(i>=min&&!(u8[i]===0x50&&u8[i+1]===0x4b&&u8[i+2]===0x05&&u8[i+3]===0x06))i--;
+    if(i<min)throw new Error('not a zip archive');
+    const count=dv.getUint16(i+10,true);
+    const cdOff=dv.getUint32(i+16,true);
+    const entries=new Map();
+    let p=cdOff;
+    const td=new TextDecoder();
+    for(let k=0;k<count;k++){
+      if(p+46>u8.length||dv.getUint32(p,true)!==0x02014b50)break;
+      const method=dv.getUint16(p+10,true);
+      const csize=dv.getUint32(p+20,true);
+      const nlen=dv.getUint16(p+28,true);
+      const elen=dv.getUint16(p+30,true);
+      const clen=dv.getUint16(p+32,true);
+      const lho=dv.getUint32(p+42,true);
+      const name=td.decode(u8.subarray(p+46,p+46+nlen));
+      if(!name.endsWith('/')&&name.indexOf('\\')<0)entries.set(name,{method,csize,lho});
+      p+=46+nlen+elen+clen;
+    }
+    if(!entries.size)throw new Error('empty archive');
+    return entries;
+  },
+  async entry(u8,e){
+    const dv=new DataView(u8.buffer,u8.byteOffset,u8.byteLength);
+    const p=e.lho;
+    if(dv.getUint32(p,true)!==0x04034b50)throw new Error('corrupt archive entry');
+    const nlen=dv.getUint16(p+26,true), elen=dv.getUint16(p+28,true);
+    const start=p+30+nlen+elen;
+    const data=u8.subarray(start,start+e.csize);
+    if(e.method===0)return u8.slice(start,start+e.csize);      // stored
+    if(e.method===8){                                          // deflate
+      const ds=new DecompressionStream('deflate-raw');
+      const out=new Blob([data]).stream().pipeThrough(ds);
+      return new Uint8Array(await new Response(out).arrayBuffer());
+    }
+    throw new Error('unsupported compression method '+e.method);
+  }
+};
+function decText(u8){
+  for(const enc of ['utf-8','shift-jis']){
+    try{return new TextDecoder(enc,{fatal:true}).decode(u8);}catch(e){}
+  }
+  return new TextDecoder('utf-8').decode(u8);
+}
+async function fileText(file){return decText(new Uint8Array(await file.arrayBuffer()));}
+const baseName=p=>p.split(/[\\/]/).pop().replace(/\.[^.]+$/,'').trim().toLowerCase();
+const dirOf=p=>p.includes('/')?p.slice(0,p.lastIndexOf('/')):'';
+
+// build a song object out of an in-memory zip
+async function songFromZip(bytes,title){
+  const entries=await Zip.read(bytes);
+  const names=[...entries.keys()].filter(n=>!n.startsWith('__MACOSX'));
+  const chartNames=names.filter(n=>/\.(tja|osu)$/i.test(n));
+  const audioNames=names.filter(n=>AEXT.test(n));
+  if(!chartNames.length)throw new Error('no .tja/.osu inside the archive');
+  const courses=[];
+  for(const cn of chartNames){
+    try{
+      const u8=await Zip.entry(bytes,entries.get(cn));
+      const txt=decText(u8);
+      const base=cn.split('/').pop();
+      const parsed=/\.tja$/i.test(cn)?parseTJA(txt,base):parseOsu(txt,base);
+      for(const co of parsed.courses){co._chart=cn;if(parsed.wave)co._wave=parsed.wave;courses.push(co);}
+    }catch(e){}
+  }
+  if(!courses.length)throw new Error('charts inside could not be parsed');
+  const song={id:++Lib.seq,src:'zip',title,sub:'',type:'OSZ',dir:'',courses,
+    audioName:(audioNames[0]||'').split('/').pop(),audioBytes:null};
+  song.audioFor=async course=>{
+    const want=baseName((course&&course._wave)||'');
+    let pick=null;
+    if(want)pick=audioNames.find(n=>baseName(n)===want);
+    if(!pick){const cd=dirOf((course&&course._chart)||'');pick=audioNames.find(n=>dirOf(n)===cd);}
+    if(!pick)pick=audioNames[0];
+    if(!pick)return null;
+    const u8=await Zip.entry(bytes,entries.get(pick));
+    return u8.slice().buffer; // own copy — decodeAudioData detaches
+  };
+  return song;
+}
 
 /* ============================================================
    PARSERS
    ============================================================ */
-async function fileText(file){
-  const b=await file.arrayBuffer();
-  for(const enc of ['utf-8','shift-jis']){
-    try{return new TextDecoder(enc,{fatal:true}).decode(b);}catch(e){}
-  }
-  return new TextDecoder('utf-8').decode(b);
-}
-const baseName=p=>p.split(/[\\/]/).pop().replace(/\.[^.]+$/,'').trim().toLowerCase();
-
 function parseTJA(text,fname){
   const out={type:'TJA',title:fname.replace(/\.[^.]+$/,''),sub:'',wave:'',courses:[]};
   const head={bpm:120,offset:0,wave:null,balloon:[],level:0,course:null};
-  let c=null,started=false;
+  let c=null;
   const mapCourse=v=>{
     v=(''+v).trim().toLowerCase();
     if(/^\d/.test(v)){const n=parseInt(v);if(!isNaN(n))return clamp(n,0,5);}
@@ -558,34 +619,34 @@ function parseTJA(text,fname){
     if(v.includes('おに')||v.includes('oni'))return 3;
     if(v.includes('むず')||v.includes('hard'))return 2;
     if(v.includes('ふつ')||v.includes('normal'))return 1;
-    if(v.includes('かんたん')||v.includes('easy')||v.includes('イージー'))return 0;
+    if(v.includes('かんたん')||v.includes('easy'))return 0;
     return 3;
   };
   const newCourse=()=>({
     id:mapCourse(head.course??3),level:head.level|0,
-    bpm:head.bpm,offset:head.offset,balls:head.balloon.slice(),wave:head.wave,
+    bpm:head.bpm,offset:head.offset,balls:head.balloon.slice(),
     notes:[],rolls:[],bals:[],gogo:[],speed:[],bpmTl:[],
     t:0,scroll:1,mscale:1,delay:0,buf:'',branch:false,bcur:'0',
-    bnotes:{},brolls:{},bbals:{},bseq:0,openRoll:null,openBal:null,lastF:null,_lb:null
+    bnotes:{},brolls:{},bbals:{},openRoll:null,openBal:null,lastF:null,_lb:null,_bseq:0
   });
-  const arrays=c=>!c.branch?c:(()=>{
+  const arrays=c=>{
     const b=c.bcur;
     c.bnotes[b]=c.bnotes[b]||[];c.brolls[b]=c.brolls[b]||[];c.bbals[b]=c.bbals[b]||[];
     return {notes:c.bnotes[b],rolls:c.brolls[b],bals:c.bbals[b]};
-  })();
+  };
   function takeMeasure(c,str){
-    c.buf=str; c.t+=c.delay; c.delay=0;
+    c.t+=c.delay; c.delay=0;
     const f=c.bpm/120*c.scroll;
     if(f!==c.lastF){c.speed.push([Math.round(c.t),+f.toFixed(4)]);c.lastF=f;}
     if(c.bpm!==c._lb){c.bpmTl.push([Math.round(c.t),c.bpm]);c._lb=c.bpm;}
     if(str===''){c.t+=c.mscale*4*60000/c.bpm;return;}
-    const mDur=c.mscale*4*60000/c.bpm, step=mDur/str.length, arr=arrays(c);
+    const mDur=c.mscale*4*60000/c.bpm, step=mDur/str.length, arr=c.branch?arrays(c):c;
     for(let i=0;i<str.length;i++){
       const tt=Math.round(c.t+i*step), ch=str[i];
       if(ch==='0')continue;
       if(ch>='1'&&ch<='4'){arr.notes.push({t:tt,k:KARR[+ch-1]});}
       else if(ch==='5'||ch==='6'){c.openRoll={s:tt};}
-      else if(ch==='7'){c.openBal={s:tt,need:c.balls[c.bseq++]||5};}
+      else if(ch==='7'){c.openBal={s:tt,need:c.balls[c._bseq]||5};c._bseq++;}
       else if(ch==='8'||ch==='9'){
         if(c.openBal){arr.bals.push({s:c.openBal.s,e:tt,need:c.openBal.need});c.openBal=null;}
         else if(c.openRoll){arr.rolls.push({s:c.openRoll.s,e:tt});c.openRoll=null;}
@@ -595,11 +656,11 @@ function parseTJA(text,fname){
   }
   function finalize(){
     if(!c)return;
-    if(c.buf)c.take&&0;
-    if(c.buf.length)takeMeasure(c,c.buf.replace(/,/g,''));
+    if(c.buf.length)takeMeasure(c,c.buf);
     c.buf='';
-    if(c.openBal)(c.branch?arrays(c):c).bals.push({s:c.openBal.s,e:Math.round(c.t),need:c.openBal.need});
-    if(c.openRoll)(c.branch?arrays(c):c).rolls.push({s:c.openRoll.s,e:Math.round(c.t)});
+    const tgt=c.branch?arrays(c):c;
+    if(c.openBal)tgt.bals.push({s:c.openBal.s,e:Math.round(c.t),need:c.openBal.need});
+    if(c.openRoll)tgt.rolls.push({s:c.openRoll.s,e:Math.round(c.t)});
     let notes=c.notes,rolls=c.rolls,bals=c.bals;
     if(c.branch){
       let best='0',bn=-1;
@@ -607,24 +668,31 @@ function parseTJA(text,fname){
       notes=c.bnotes[best]||[];rolls=c.brolls[best]||[];bals=c.bbals[best]||[];
     }
     notes.sort((a,b)=>a.t-b.t);
+    // note time = beat time − OFFSET×1000
+    const off=-(c.offset||0)*1000, sh=t=>Math.round(t+off);
+    notes.forEach(n=>n.t=sh(n.t));
+    rolls.forEach(r=>{r.s=sh(r.s);r.e=sh(r.e);});
+    bals.forEach(b=>{b.s=sh(b.s);b.e=sh(b.e);});
+    c.gogo.forEach(g=>g[0]=sh(g[0]));
+    c.speed.forEach(s=>s[0]=sh(s[0]));
+    c.bpmTl.forEach(b=>b[0]=sh(b[0]));
     const dur=(notes.length?notes[notes.length-1].t:c.t)+1200;
     const fin={id:c.id,name:CNAMES[c.id],level:c.level,bpm:c.bpm,notes,rolls,bals,
       gogo:c.gogo,speed:c.speed,bpmTl:c.bpmTl,dur,n:notes.length};
     if(!out.courses.some(x=>x.id===fin.id))out.courses.push(fin);
-    c=null;started=false;
+    c=null;
   }
-
   for(let raw of text.split(/\r\n?|\n/)){
-    const line=raw.replace(/\uFEFF/g,'').trim();
+    let line=raw.replace(/\uFEFF/g,'').trim();
     if(!line)continue;
-    const ci=line.indexOf('//'); if(ci>0)line=line.slice(0,ci).trim(); else if(ci===0)continue;
+    const ci=line.indexOf('//');
+    if(ci===0)continue; if(ci>0)line=line.slice(0,ci).trim();
     if(!line)continue;
-
-    if(line[0]==='#'){ // command
+    if(line[0]==='#'){
       const m=line.match(/^#\s*([A-Za-z0-9]+)\s*(.*)$/); if(!m)continue;
       const name=m[1].toUpperCase(), arg=(m[2]||'').trim();
       switch(name){
-        case 'START': if(c)finalize(); c=newCourse(); started=true; break;
+        case 'START': if(c)finalize(); c=newCourse(); break;
         case 'END': finalize(); break;
         case 'BPMCHANGE': case 'BPM': if(c)c.bpm=parseFloat(arg)||c.bpm; break;
         case 'SCROLL': if(c)c.scroll=parseFloat(arg)||1; break;
@@ -637,22 +705,21 @@ function parseTJA(text,fname){
       continue;
     }
     const hm=line.match(/^([A-Za-z]+)\s*:\s*(.*)$/);
-    if(hm){ // header
+    if(hm){
       const k=hm[1].toUpperCase(), v=hm[2].trim();
       switch(k){
         case 'TITLE': out.title=v; break;
         case 'SUBTITLE': out.sub=v; break;
         case 'BPM': head.bpm=parseFloat(v)||120; break;
         case 'OFFSET': head.offset=parseFloat(v)||0; break;
-        case 'WAVE': head.wave=v; out.wave=v; break;
+        case 'WAVE': head.wave=v; if(!out.wave)out.wave=v; break;
         case 'LEVEL': head.level=parseInt(v)||0; break;
         case 'COURSE': head.course=v; break;
         case 'BALLOON': head.balloon=v.split(',').map(x=>parseInt(x)||5).filter(x=>x>0); break;
       }
       continue;
     }
-    // note data line
-    if(!c||!started)continue;
+    if(!c)continue;
     let l2=line;
     if(c.branch&&'012'.includes(l2[0])){c.bcur=l2[0];l2=l2.slice(1);}
     c.buf+=l2;
@@ -660,20 +727,6 @@ function parseTJA(text,fname){
     while((idx=c.buf.indexOf(','))>=0){const part=c.buf.slice(0,idx);c.buf=c.buf.slice(idx+1);takeMeasure(c,part);}
   }
   if(c)finalize();
-
-  // OFFSET: noteAudioTime = beatTime − OFFSET×1000
-  for(const co of out.courses){
-    const sh=-(co.bpm,0)||0;
-    const off=-((co._off!==undefined?co._off:head.offset))*1000;
-    const shf=t=>Math.round(t+off);
-    co.notes.forEach(n=>n.t=shf(n.t));
-    co.rolls.forEach(r=>{r.s=shf(r.s);r.e=shf(r.e);});
-    co.bals.forEach(b=>{b.s=shf(b.s);b.e=shf(b.e);});
-    co.gogo.forEach(g=>g[0]=shf(g[0]));
-    co.speed.forEach(s=>s[0]=shf(s[0]));
-    co.bpmTl.forEach(b=>b[0]=shf(b[0]));
-    co.notes.sort((a,b)=>a.t-b.t);
-  }
   out.courses=out.courses.filter(cc=>cc.n>0);
   return out;
 }
@@ -689,7 +742,6 @@ function parseOsu(text,fname){
   const kv=arr=>{const o={};for(const l of arr||[]){const i=l.indexOf('=');if(i>0)o[l.slice(0,i).trim()]=l.slice(i+1).trim();}return o;};
   const gen=kv(secs.General),meta=kv(secs.Metadata),diff=kv(secs.Difficulty);
   const SM=parseFloat(diff.SliderMultiplier)||1.4;
-
   const tps=[];
   for(const l of secs.TimingPoints||[]){
     const p=l.split(',');if(p.length<2)continue;
@@ -698,28 +750,27 @@ function parseOsu(text,fname){
   tps.sort((a,b)=>a.t-b.t);
   const uninAt=t=>{let r=null;for(const tp of tps){if(tp.t<=t&&tp.unin)r=tp;else if(tp.t>t)break;}return r;};
   const svAt=t=>{let r=1;for(const tp of tps){if(tp.t<=t&&!tp.unin)r=clamp(-100/tp.bl,.1,10);else if(tp.t>t)break;}return r;};
-
-  let bpm=120,sv=1;
+  let bpm=120;
   const speed=[],bpmTl=[];
   for(const tp of tps){
     if(tp.bl>0){bpm=60000/tp.bl;bpmTl.push([Math.round(tp.t),+bpm.toFixed(2)]);}
-    else sv=clamp(-100/tp.bl,.1,10);
-    const f=bpm/120*sv;
+    const f=bpm/120*svAt(tp.t);
     if(!speed.length||Math.abs(f-speed[speed.length-1][1])>1e-4)speed.push([Math.round(Math.max(0,tp.t)),+f.toFixed(4)]);
   }
   if(!speed.length)speed.push([0,1]);
   if(!bpmTl.length)bpmTl.push([0,120]);
-
   const notes=[],rolls=[];
   for(const l of secs.HitObjects||[]){
     const p=l.split(',');if(p.length<5)continue;
     const x=+p[0],time=Math.round(+p[2]),type=+p[3],hs=+p[4];
     if(type&1){
-      notes.push({t:time,k:(x<320?'don':'ka')+((hs&8)?'B':'')});
+      // hitsound clap = ka, finish = big note
+      const ka=!!(hs&8), big=!!(hs&4);
+      notes.push({t:time,k:(ka?'ka':'don')+(big?'B':'')});
     }else if(type&2){
       const slides=+p[6]||1,len=+p[7]||0;
-      const tp=uninAt(time),bl=tp?tp.bl:500;
-      const e=Math.round(time+bl*(len/(SM*100))*slides);
+      const uni=uninAt(time),bl=uni?uni.bl:500,m=svAt(time);
+      const e=Math.round(time+bl*(len/(SM*100*m))*slides);
       rolls.push({s:time,e:Math.max(time+200,e)});
     }else if(type&8){
       rolls.push({s:time,e:Math.round(+p[5]||time+2000)});
@@ -727,11 +778,11 @@ function parseOsu(text,fname){
   }
   notes.sort((a,b)=>a.t-b.t);
   const dur=(notes.length?notes[notes.length-1].t:0)+1200;
-  for(const r of rolls)if(r.e>dur) rolls.e=dur;
+  for(const r of rolls)if(r.e>dur)r.e=dur;
   return {
     type:'OSU',title:meta.TitleUnicode||meta.Title||fname.replace(/\.osu$/i,''),
     sub:meta.Artist||'',wave:gen.AudioFilename||'',
-    courses:[{id:-1,name:meta.Version||'osu!taiko',level:0,bpm:Math.round(bpmTl[0][1]||120),
+    courses:[{id:-1,name:meta.Version||fname.replace(/\.osu$/i,''),level:0,bpm:Math.round(bpmTl[0][1]||120),
       notes,rolls,bals:[],gogo:[],speed,bpmTl,dur,n:notes.length}]
   };
 }
@@ -740,52 +791,140 @@ function parseOsu(text,fname){
    LIBRARY
    ============================================================ */
 const Lib={
-  songs:[],audioPool:[],seq:0,
+  songs:[],
   async addFiles(files){
-    const pendingAudio=[];
+    const pending=[];
     for(const f of files){
       const ext=f.name.split('.').pop().toLowerCase();
       if(ext==='tja'||ext==='osu'){
         try{
           const txt=await fileText(f);
           const parsed=ext==='tja'?parseTJA(txt,f.name):parseOsu(txt,f.name);
-          if(ext==='osu'&&/\bMode\s*:\s*(\d)/.test(txt)&&+txt.match(/\bMode\s*:\s*(\d)/)[1]!==1)
-            toast('note: that .osu is not a taiko diff — parsed anyway','');
-          if(!parsed.courses.length){toast(`no playable course in ${f.name}`,'bad');continue;}
-          Lib.songs.push({id:++Lib.seq,title:parsed.title,sub:parsed.sub,type:parsed.type,
-            wave:parsed.wave||'',courses:parsed.courses,audio:null,audioBytes:null,audioBuf:null});
-          toast(`added: ${parsed.title} — ${parsed.courses.length} course${parsed.courses.length>1?'s':''}`,'good');
-        }catch(e){console.error(e);toast(`failed to parse ${f.name}`,'bad');}
-      }else if(['mp3','ogg','wav','m4a','flac','aac','opus'].includes(ext)){
-        pendingAudio.push(f);
-      }
+          if(!parsed.courses.length){toast('no course in '+f.name,'bad');continue;}
+          Lib.songs.push({id:++Lib.seq,src:'local',title:parsed.title,sub:parsed.sub,type:parsed.type,
+            dir:'',wave:parsed.wave,courses:parsed.courses,audioFile:null,audioName:'',audioBytes:null});
+          toast('added: '+parsed.title,'good');
+        }catch(e){toast('could not parse '+f.name,'bad');}
+      }else if(ext==='osz'||ext==='zip'){
+        try{
+          toast('unpacking '+f.name+'…');
+          const bytes=new Uint8Array(await f.arrayBuffer());
+          const sg=await songFromZip(bytes,f.name.replace(/\.(osz|zip)$/i,''));
+          Lib.songs.push(sg);
+          toast(f.name+': '+sg.courses.length+' difficulties','good');
+        }catch(e){toast(f.name+': '+e.message,'bad');}
+      }else if(AEXT.test(f.name))pending.push(f);
     }
-    Lib.audioPool.push(...pendingAudio);
-    // pair audio with songs by filename
     for(const sg of Lib.songs){
-      if(sg.audio)continue;
+      if(sg.src!=='local'||sg.audioFile)continue;
       const w=baseName(sg.wave||sg.title);
-      const hit=Lib.audioPool.find(a=>{
-        const b=baseName(a.name);
-        return b===w||(w&&b.includes(w))||(b&&w.includes(b));
-      });
-      if(hit)sg.audio=hit;
+      const hit=pending.find(a=>{const b=baseName(a.name);return b===w||(w&&b.includes(w))||(b&&w.includes(b));});
+      if(hit){sg.audioFile=hit;sg.audioName=hit.name;pending.splice(pending.indexOf(hit),1);}
     }
     UI.renderLibrary();
   },
-  remove(id){Lib.songs=Lib.songs.filter(s=>s.id!==id);UI.renderLibrary();}
+  remove(id){
+    Lib.songs=Lib.songs.filter(s=>s.id!==id);
+    if(UI.sel&&UI.sel.sg.id===id){UI.sel=null;Host.cr=null;}
+    UI.renderLibrary();UI.updateStartBar();
+  }
 };
 
 /* ============================================================
-   MIRROR (guest engine / dual-view engine)
+   GITHUB LOADER
+   ============================================================ */
+const GH={
+  busy:false,
+  parseInput(v){
+    v=v.trim(); if(!v)return null;
+    v=v.replace(/\.git$/,'');
+    let m=v.match(/github\.com\/([^\/\s]+)\/([^\/\s]+)(?:\/tree\/([^\/\s]+)(?:\/(\S+))?)/);
+    if(m)return {owner:m[1],repo:m[2],branch:m[3]||'',sub:(m[4]||'').replace(/\/+$/,'')};
+    m=v.match(/^([^\/\s@:]+)\/([^\/\s@:]+)(?:@([^:\s]+))?(?::(.+))?$/);
+    if(!m)return null;
+    return {owner:m[1],repo:m[2],branch:m[3]||'',sub:(m[4]||'').replace(/\/+$/,'')};
+  },
+  raw(o,r,b,p){return 'https://raw.githubusercontent.com/'+o+'/'+r+'/'+b+'/'+p.split('/').map(encodeURIComponent).join('/');},
+  async load(input){
+    if(this.busy)return;
+    const p=this.parseInput(input);
+    if(!p){UI.ghStatus('cannot read that — use owner/repo or a github.com URL','bad');return;}
+    this.busy=true;
+    try{
+      UI.ghStatus('contacting github…');
+      let branch=p.branch;
+      if(!branch){
+        const r=await fetch('https://api.github.com/repos/'+p.owner+'/'+p.repo);
+        if(!r.ok)throw new Error(r.status===404?'repository not found (must be public)':'github error '+r.status);
+        branch=(await r.json()).default_branch||'main';
+      }
+      UI.ghStatus('listing files…');
+      const tr=await fetch('https://api.github.com/repos/'+p.owner+'/'+p.repo+'/git/trees/'+branch+'?recursive=1');
+      if(!tr.ok)throw new Error(tr.status===403?'rate limited by github — try again later':'cannot list repository ('+tr.status+')');
+      const tree=(await tr.json()).tree.filter(f=>f.type==='blob').sort((a,b)=>a.path<b.path?-1:1);
+      let charts=tree.filter(f=>/\.(tja|osu)$/i.test(f.path));
+      if(p.sub)charts=charts.filter(f=>f.path===p.sub||f.path.startsWith(p.sub+'/'));
+      const oszFiles=tree.filter(f=>/\.(osz|zip)$/i.test(f.path)&&(p.sub?f.path===p.sub||f.path.startsWith(p.sub+'/'):true));
+      const audioFiles=tree.filter(f=>AEXT.test(f.path));
+      if(!charts.length&&!oszFiles.length)throw new Error('no .tja / .osu / .osz files found'+(p.sub?' under '+p.sub:''));
+      Lib.songs=Lib.songs.filter(s=>s.src!=='gh');
+      let i=0,ok=0;
+      for(const f of oszFiles){ // archives: lazy rows, unpacked on tap
+        Lib.songs.push({id:++Lib.seq,src:'gh',deferred:true,title:f.path.split('/').pop().replace(/\.(osz|zip)$/i,''),
+          sub:'',type:'OSZ',dir:dirOf(f.path),courses:[],
+          oszUrl:this.raw(p.owner,p.repo,branch,f.path),size:f.size});
+        ok++;
+      }
+      for(const f of charts){
+        i++;UI.ghStatus('reading charts '+i+'/'+charts.length+'…');
+        try{
+          const txt=await (await fetch(this.raw(p.owner,p.repo,branch,f.path))).text();
+          const parsed=/\.tja$/i.test(f.path)?parseTJA(txt,f.path):parseOsu(txt,f.path);
+          if(!parsed.courses.length)continue;
+          const dir=dirOf(f.path);
+          const waveBase=(parsed.wave||'').toLowerCase();
+          const dirAudio=audioFiles.filter(a=>dir===''?!a.path.includes('/'):a.path.startsWith(dir+'/'));
+          const audio=dirAudio.find(a=>a.path.toLowerCase()===waveBase||a.path.toLowerCase().endsWith('/'+waveBase))||dirAudio[0]||null;
+          Lib.songs.push({id:++Lib.seq,src:'gh',title:parsed.title,sub:parsed.sub,type:parsed.type,
+            dir,courses:parsed.courses,
+            audioUrl:audio?this.raw(p.owner,p.repo,branch,audio.path):null,
+            audioName:audio?audio.path.split('/').pop():'',audioBytes:null});
+          ok++;
+        }catch(e){}
+      }
+      if(!ok)throw new Error('files found but none could be parsed');
+      localStorage.setItem('tl-repo',input.trim());
+      UI.ghStatus(ok+' song'+(ok>1?'s':'')+' loaded from '+p.owner+'/'+p.repo,'good');
+      UI.renderLibrary();
+    }catch(e){UI.ghStatus(e.message,'bad');}
+    this.busy=false;
+  },
+  async loadOsz(song){ // tap-to-unpack for archives in the repo
+    if(song._loading||(song.courses&&song.courses.length))return;
+    song._loading=true;UI.renderLibrary();
+    try{
+      toast('unpacking '+song.title+'…');
+      const bytes=new Uint8Array(await (await fetch(song.oszUrl)).arrayBuffer());
+      const s=await songFromZip(bytes,song.title);
+      song.courses=s.courses;song.audioFor=s.audioFor;song.audioName=s.audioName;
+      song.deferred=false;song.type='OSZ';
+      toast(song.title+': '+s.courses.length+' difficulties','good');
+    }catch(e){toast(song.title+': '+e.message,'bad');}
+    song._loading=false;UI.renderLibrary();
+  }
+};
+
+/* ============================================================
+   MIRROR (4K engine)
    ============================================================ */
 class Mirror{
-  constructor(ext){this.ext=!!ext;this.clear();}
-  clear(){this.chart=null;this.beats=[];this.info=null;this.audioBuf=null;this.msrc=null;
+  constructor(){this.clear();}
+  clear(){this.chart=null;this.beats=[];this.audioBuf=null;this.msrc=null;
+    this.clockSong=0;this.clockAnchor=0;this.started=false;this._play=false;
     this.resetStats();this.press=[null,null,null,null];this.judge=null;}
   resetStats(){this.combo=0;this.comboT0=0;this.score=0;this.acc=1;this.gauge=0;
-    this.counts={p:0,g:0,m:0};this.balGot={};this.nPtr=0;this.btPtr=0;this.rollPtr=0;}
-  load(o){
+    this.counts={p:0,g:0,m:0};this.balGot={};this.nPtr=0;this.btPtr=0;}
+  load(o,quiet){
     this.chart={
       title:o.title,sub:o.sub,course:o.course,level:o.level,type:o.type,dur:o.dur,
       notes:o.notes.map((a,i)=>({t:a[0],k:KARR[a[1]],id:i,mp:false})),
@@ -796,20 +935,21 @@ class Mirror{
     this.beats=genBeats(o.bpmTl,o.dur);
     this.resetStats();
     this.press=[null,null,null,null];this.judge=null;
-    if(!this.ext){Net.send({k:'ready'});toast('chart received from host','good');UI.guestChart(this.chart);}
+    if(!quiet){
+      Net.send({k:'ready'});
+      toast('chart received from host','good');
+      UI.guestChart(this.chart);
+    }
   }
-  songNow(){
-    if(this.ext)return Host.st();
-    return this.clockPlaying?this.clockSong+(performance.now()-this.clockAnchor):this.clockSong;
-  }
+  songNow(){return this.started?this.clockSong+(performance.now()-this.clockAnchor):0;}
   start(lead){
-    this.resetStats();this.judge=null;
-    if(this.chart)this.chart.notes.forEach(n=>n.mp=false);
-    this.chart&&this.chart.rolls.forEach(r=>r.nx=0);
-    this.press=[null,null,null,null];
-    if(this.ext)return;
-    const l=Math.max(200,lead-this.rtt()/2);
-    this.clockSong=-l;this.clockAnchor=performance.now();this.clockPlaying=true;
+    this.resetStats();
+    if(this.chart){this.chart.notes.forEach(n=>n.mp=false);this.chart.rolls.forEach(r=>r.nx=0);}
+    this.press=[null,null,null,null];this.judge=null;
+    this._play=true;this.started=true;
+    if(Game.role!=='mirror')return; // dual view on host: clock belongs to Host
+    const l=Math.max(200,lead-Net.rtt/2);
+    this.clockSong=-l;this.clockAnchor=performance.now();
     if(S.mMusic&&this.audioBuf){
       A.ensure();
       const src=A.ctx.createBufferSource();src.buffer=this.audioBuf;src.connect(A.musGain);
@@ -818,18 +958,19 @@ class Mirror{
       this.msrc=src;
     }
   }
-  pause(song){if(this.ext)return;this.clockPlaying=false;this.clockSong=song+this.rtt()/2;this.stopMusic();}
-  resume(lead){if(this.ext)return;this.clockSong=-(Math.max(200,lead-this.rtt()/2));
-    this.clockAnchor=performance.now();this.clockPlaying=true;
+  pause(song){if(Game.role!=='mirror')return;this.clockSong=song+Net.rtt/2;this.stopMusic();}
+  resume(lead){
+    if(Game.role!=='mirror')return;
+    this.clockSong=-(Math.max(200,lead-Net.rtt/2));this.clockAnchor=performance.now();
     if(S.mMusic&&this.audioBuf&&this.clockSong<0){A.ensure();
       const src=A.ctx.createBufferSource();src.buffer=this.audioBuf;src.connect(A.musGain);
-      src.start(A.ctx.currentTime+(-this.clockSong)/1000+S.gAudioOff/1000,0);this.msrc=src;}}
-  stop(){this.clockPlaying=false;this.stopMusic();}
+      src.start(A.ctx.currentTime+(-this.clockSong)/1000+S.gAudioOff/1000,0);this.msrc=src;}
+  }
+  stop(){this._play=false;this.stopMusic();}
   stopMusic(){if(this.msrc){try{this.msrc.stop();}catch(e){}this.msrc=null;}}
-  rtt(){return Net.rtt;}
   sync(m){
-    if(this.ext||!this.clockPlaying)return;
-    const cur=this.songNow(),exp=m.song+this.rtt()/2;
+    if(Game.role!=='mirror'||!this.started)return;
+    const cur=this.songNow(),exp=m.song+Net.rtt/2;
     if(Math.abs(exp-cur)>90){this.clockSong=exp;this.clockAnchor=performance.now();}
   }
   feed(m){
@@ -845,90 +986,114 @@ class Mirror{
       case 'resume':this.resume(m.lead);break;
       case 'pause':this.pause(m.song);break;
       case 'sync':this.sync(m);break;
-      case 'end':this.stop();if(!this.ext)UI.showResults(m.res,true);break;
+      case 'end':this.stop();if(Game.role==='mirror')UI.showResults(m.res,true);break;
       case 'reset':this.stop();this.resetStats();this.judge=null;
         if(this.chart)this.chart.notes.forEach(n=>n.mp=false);break;
     }
   }
-  key(lane){ // local 4K keypress
+  key(lane){
     this.press[lane]={u:performance.now()+110};
     if(S.mKeySnd){(lane===0||lane===2)?A.don(lane===2,.55):A.ka(lane===3,.55);}
-    if(S.mControl&&Net.linked()&&this.chart&&this.clockPlaying)
-      Net.send({k:'key',lane});
+    if(S.mControl&&Net.linked()&&this.chart&&this._play)Net.send({k:'key',lane});
   }
   update(t){
     const ch=this.chart;if(!ch)return;
-    const human=!this.ext&&S.mControl;
     const now=performance.now();
-    // advance pointers
+    while(this.btPtr<this.beats.length&&this.beats[this.btPtr]<t-600)this.btPtr++;
+    if(!this._play)return;
+    if(Game.role==='host'&&S.mControl)return; // human plays the 4K side
     while(this.nPtr<ch.notes.length&&ch.notes[this.nPtr].t<t-400)this.nPtr++;
-    while(this.btPtr<this.beats.length&&this.beats[this.btPtr]<t-(t-t))this.btPtr=0; // (reset-safe)
-    // note presses
-    if(!human&&this.clockPlaying!==false){
-      for(let i=this.nPtr;i<ch.notes.length;i++){
-        const n=ch.notes[i];if(n.t>t+35)break;
-        if(!n.mp&&n.t<=t+35){n.mp=true;this.press[NOTE[n.k].lane]={u:now+85};}
-      }
-      // rolls → alternating ticks on lanes 0/1
-      for(const r of ch.rolls){
-        if(t>=r.s&&t<=r.e){
-          if(!r.nx)r.nx=Math.max(r.s,t);
-          while(r.nx<=t){r.alt=!r.alt;this.press[r.alt?1:0]={u:now+70};r.nx+=115;}
-        }else if(t<r.s)r.nx=0;
-      }
-      // balloons → fast alternating taps
-      for(const b of ch.bals){
-        if(t>=b.s&&t<=b.e){
-          if(!b.nx)b.nx=Math.max(b.s,t);
-          while(b.nx<=t){b.alt=!b.alt;this.press[b.alt?1:0]={u:now+70};b.nx+=85;}
-        }else if(t<b.s)b.nx=0;
-      }
+    for(let i=this.nPtr;i<ch.notes.length;i++){
+      const n=ch.notes[i];if(n.t>t+35)break;
+      if(!n.mp){n.mp=true;this.press[NOTE[n.k].lane]={u:now+85};}
+    }
+    for(const r of ch.rolls){
+      if(t>=r.s&&t<=r.e){
+        if(!r.nx||r.nx<r.s)r.nx=Math.max(r.s,t);
+        while(r.nx<=t){r.alt=!r.alt;this.press[r.alt?1:0]={u:now+70};r.nx+=115;}
+      }else if(t<r.s)r.nx=0;
+    }
+    for(const b of ch.bals){
+      if(t>=b.s&&t<=b.e){
+        if(!b.nx||b.nx<b.s)b.nx=Math.max(b.s,t);
+        while(b.nx<=t){b.alt=!b.alt;this.press[b.alt?1:0]={u:now+70};b.nx+=85;}
+      }else if(t<b.s)b.nx=0;
     }
   }
 }
+const Mir=new Mirror();
 
 /* ============================================================
    HOST (authoritative taiko engine)
    ============================================================ */
+let wakeSentinel=null;
+async function wakeLock(on){
+  try{
+    if(on&&navigator.wakeLock)wakeSentinel=await navigator.wakeLock.request('screen');
+    else if(!on&&wakeSentinel){wakeSentinel.release();wakeSentinel=null;}
+  }catch(e){}
+}
+
 const Host={
-  song:null,cr:null,sp:null,notes:[],rolls:[],bals:[],
-  state:'idle',t0:0,_pos:0,useAudio:false,audioBuf:null,audioBytes:null,
+  song:null,ci:0,cr:null,sp:null,notes:[],rolls:[],bals:[],beats:null,
+  state:'idle',t0:0,_pos:0,useAudio:false,audioBuf:null,audioBytes:null,_audioTok:0,
   seq:0,ptr:0,nPtr:0,beatPtr:0,gogoIdx:0,gogoOn:false,
   counts:{p:0,g:0,m:0},combo:0,comboT0:0,maxCombo:0,score:0,gauge:0,gGain:1,
-  fx:[],popup:null,drumFx:null,lastSync:0,lastRollFx:0,
+  fx:[],popup:null,drumFx:null,lastSync:0,lastRollFx:0,_lastKind:'don',chartOut:null,
 
   load(song,ci){
-    this.song=song;this.ci=ci;this.cr=song.courses[ci];this.state='ready';
+    if(!song||!song.courses||!song.courses[ci])return;
+    this.song=song;this.ci=ci;this.cr=song.courses[ci];this.state='idle';
     this.notes=this.cr.notes.map((n,i)=>({t:n.t,k:n.k,id:i,j:null}));
     this.rolls=this.cr.rolls.map((r,i)=>({...r,idx:i,h:0}));
     this.bals=this.cr.bals.map((b,i)=>({...b,idx:i,got:0,done:false}));
     this.gGain=this.notes.length?10000*0.78/this.notes.length:5;
-    this.rebuildSpeed();
+    this.sp=makeSpeed(this.cr.speed,0.34*S.noteSpeed);
+    this.beats=genBeats(this.cr.bpmTl,this.cr.dur);
     this.chartOut={
       title:song.title,sub:song.sub,course:this.cr.name,level:this.cr.level,type:song.type,dur:this.cr.dur,
       notes:this.notes.map(n=>[n.t,KARR.indexOf(n.k)]),
       rolls:this.rolls.map(r=>[r.s,r.e]),
       bals:this.bals.map(b=>[b.s,b.e,b.need]),
-      gogo:this.cr.gogo,
-      bpmTl:this.cr.bpmTl
+      gogo:this.cr.gogo,bpmTl:this.cr.bpmTl
     };
-    MirL.load(this.chartOut);
+    Mir.load(this.chartOut,true);
     Net.sendChart(this.chartOut);
+    this._audioTok++;
+    this.audioBytes=null;this.audioBuf=null;
+    if(song.audioBytes)this.decode(song.audioBytes,song,this._audioTok);
+    else if(song.audioFor||song.audioFile||song.audioUrl){this.audioBuf=undefined;this.fetchAudio(song,this._audioTok);}
     UI.updateStartBar();
-    // decode audio (kept copy for sending)
-    if(song.audio&&!this.audioBuf){
-      this.audioBuf=undefined; // pending
-      song.audio.file.arrayBuffer().then(bytes=>{
-        this.audioBytes=bytes;
-        A.ensure();
-        return A.ctx.decodeAudioData(bytes.slice(0));
-      }).then(buf=>{this.audioBuf=buf;UI.updateStartBar();})
-        .catch(e=>{console.error(e);this.audioBuf=null;toast('could not decode audio — using metronome','bad');UI.updateStartBar();});
+  },
+  decoding(){return this.audioBuf===undefined;},
+  ready(){return !!this.cr&&!this.decoding();},
+  async fetchAudio(song,tok){
+    try{
+      let buf=null;
+      if(song.audioFor)buf=await song.audioFor(this.cr);
+      else if(song.audioFile)buf=await song.audioFile.arrayBuffer();
+      else if(song.audioUrl)buf=await (await fetch(song.audioUrl)).arrayBuffer();
+      if(tok!==this._audioTok)return;
+      if(!buf)throw new Error('no audio');
+      this.decode(buf,song,tok);
+    }catch(e){
+      if(tok!==this._audioTok)return;
+      this.audioBuf=null;toast('audio unavailable — metronome mode','bad');UI.updateStartBar();
+    }
+  },
+  async decode(bytes,song,tok){
+    try{
+      A.ensure();
+      const buf=await A.ctx.decodeAudioData(bytes.slice(0));
+      if(tok!==this._audioTok)return;
+      this.audioBuf=buf;this.audioBytes=bytes;
+      if(song.src==='gh')song.audioBytes=bytes; // cache only for streamed gh files (zip audio is per-difficulty)
+    }catch(e){
+      if(tok!==this._audioTok)return;
+      this.audioBuf=null;toast('audio could not be decoded — metronome mode','bad');
     }
     UI.updateStartBar();
   },
-  rebuildSpeed(){if(this.cr)this.sp=makeSpeed(this.cr.speed,0.34*S.noteSpeed);},
-  ready(){return this.cr&&this.audioBuf!==undefined;},
   st(){
     if(this.state==='pause')return this._pos;
     const now=this.useAudio&&A.ctx?A.ctx.currentTime:performance.now()/1000;
@@ -945,10 +1110,12 @@ const Host={
   },
   begin(){
     A.ensure();
+    $('#ovResult').hidden=true;
     const first=this.notes.length?this.notes[0].t:0;
     const lead=Math.max(3,-first/1000+1.5);
     this.useAudio=!!this.audioBuf;
-    this.resetPlay();this.rebuildSpeed();
+    this.resetPlay();
+    this.sp=makeSpeed(this.cr.speed,0.34*S.noteSpeed);
     this.state='count';
     this.t0=(this.useAudio?A.ctx.currentTime:performance.now()/1000)+lead;
     if(this.useAudio)Music.schedule(this.t0,0,S.aOff/1000);else Metro.start(this.cr.bpm);
@@ -981,21 +1148,20 @@ const Host={
     $('#ovPause').hidden=true;$('#ovResult').hidden=true;
     Game.close();
   },
-  emit(m){m.seq=++this.seq;Net.send(m);if(Game.dualOn())MirL.feed(m);},
+  emit(m){m.seq=++this.seq;Net.send(m);if(Game.dualOn())Mir.feed(m);},
   acc(){const{p,g,m}=this.counts,d=p+g+m;return d?(p+0.65*g)/d:1;},
   scoreFor(n,j){
     const big=n.k==='donB'||n.k==='kaB';
     const mult=this.combo>=100?4:this.combo>=50?2:1;
     return Math.round((j==='p'?1000:500)*(big?2:1)*mult);
   },
-  hit(kind,comp=0){
-    const playable=this.state==='play';
-    // drum sound + visual always
+  hit(kind){
     if(kind==='don')A.don(false);else A.ka(false);
+    this._lastKind=kind;
     this.drumFx={k:kind,t0:performance.now()};
-    if(!playable)return;
-    const t=this.st()+S.inOff-comp;
-    // note match
+    if(Game.dualOn())Mir.press[kind==='don'?0:1]={u:performance.now()+110};
+    if(this.state!=='play')return;
+    const t=this.st()+S.inOff;
     let best=null,bd=1e9;
     for(let i=this.ptr;i<this.notes.length;i++){
       const n=this.notes[i];
@@ -1005,7 +1171,6 @@ const Host={
       const d=Math.abs(n.t-t);
       if(d<bd){bd=d;best=n;}
     }
-    const L=taikoLayout(innerWidth,innerHeight);
     if(best){
       const j=bd<=PERF?'p':'g';
       best.j=j;this.counts[j]++;this.combo++;this.maxCombo=Math.max(this.maxCombo,this.combo);
@@ -1019,7 +1184,6 @@ const Host={
         g:this.gauge/10000,a:this.acc()});
       return;
     }
-    // balloon?
     for(const b of this.bals){
       if(!b.done&&t>=b.s-70&&t<=b.e+140){
         b.got++;A.pop();this.score+=350;this.gauge=clamp(this.gauge+this.gGain*0.5,0,10000);
@@ -1029,7 +1193,6 @@ const Host={
         return;
       }
     }
-    // drumroll?
     for(const r of this.rolls){
       if(t>=r.s-60&&t<=r.e){
         r.h++;this.score+=100;this.gauge=clamp(this.gauge+this.gGain*0.15,0,10000);
@@ -1038,17 +1201,16 @@ const Host={
         return;
       }
     }
-    // free hit — sound only
   },
   addFx(kind,big,col){
     const L=taikoLayout(innerWidth,innerHeight);
     const f={kind,x:L.hitX,y:L.beltY,t0:performance.now(),
       col:col||(kind==='tick'?'#e6b84c':(this._lastKind==='ka'?'#8fb8ee':'#ff7a52'))};
-    if(kind==='ring'){f.col=col||(this._lastKind==='ka'?'#8fb8ee':'#ff7a52');
-      f.parts=[];const cols=['#f3e7d3','#f2c14e','#f0603f'];
-      for(let i=0;i<(big?12:8);i++)f.parts.push({a:Math.random()*6.283,v:.06+Math.random()*.12,
-        rot:Math.random()*3,c:cols[i%3]});}
-    if(kind==='burst'){f.col='#e87aa0';f.parts=[];for(let i=0;i<16;i++)f.parts.push({a:Math.random()*6.283,v:.08+Math.random()*.16,rot:Math.random()*3,c:i%2?'#e87aa0':'#f3e7d3'});}
+    if(kind==='ring'||kind==='burst'){
+      f.parts=[];
+      const cols=kind==='burst'?['#e87aa0','#f3e7d3']:['#f3e7d3','#f2c14e','#f0603f'];
+      for(let i=0;i<(kind==='burst'?16:(big?12:8));i++)f.parts.push({a:Math.random()*6.283,v:.06+Math.random()*.12,rot:Math.random()*3,c:cols[i%3]});
+    }
     this.fx.push(f);
   },
   sweep(t){
@@ -1070,14 +1232,11 @@ const Host={
     const t=this.st();
     if(this.state!=='play')return;
     this.sweep(t);
-    // gogo
     while(this.gogoIdx<this.cr.gogo.length&&this.cr.gogo[this.gogoIdx][0]<=t){
       this.gogoOn=!!this.cr.gogo[this.gogoIdx][1];this.gogoIdx++;
     }
-    // balloon expiry
     for(const b of this.bals)if(!b.done&&t>b.e+200&&b.got<b.need)b.done=true;
-    // periodic sync
-    if(performance.now()-this.lastSync>1200){this.lastSync=performance.now();Net.emit({k:'sync',song:t,playing:true});}
+    if(performance.now()-this.lastSync>1200){this.lastSync=performance.now();Net.emit({k:'sync',song:t});}
     if(t>this.cr.dur+800)this.finish();
   },
   finish(){
@@ -1091,16 +1250,9 @@ const Host={
     UI.showResults(res,false);
   }
 };
-let wakeSentinel=null;
-async function wakeLock(on){
-  try{
-    if(on&&navigator.wakeLock)wakeSentinel=await navigator.wakeLock.request('screen');
-    else if(!on&&wakeSentinel){wakeSentinel.release();wakeSentinel=null;}
-  }catch(e){}
-}
 
 /* ============================================================
-   NET — BroadcastChannel + WebRTC transports, chunked xfer
+   NET — BroadcastChannel + WebRTC, chunked transfer
    ============================================================ */
 const Net={
   bc:null,rtc:null,role:'host',mirrorUp:false,mirrorReady:false,
@@ -1115,7 +1267,7 @@ const Net={
     if(role==='mirror'&&!this._pingTimer){
       this._pingTimer=setInterval(()=>{
         if(this.linked())this.send({k:'ping',t:performance.now()});
-        else if(this.role==='mirror')this.send({k:'hi',role:'mirror'});
+        else this.send({k:'hi',role:'mirror'});
       },1500);
     }
     this.send({k:'hi',role});
@@ -1131,6 +1283,7 @@ const Net={
     if(!m||typeof m!=='object')return;
     if(m.seq!=null){if(this._seen.has(m.seq))return;this._seen.add(m.seq);
       if(this._seen.size>512)this._seen=new Set([...this._seen].slice(-256));}
+    if(m.k==='xfer'){this.xfer={kind:m.kind,len:m.len,got:0,parts:new Uint8Array(m.len)};return;}
     if(this.role==='host')this.recvHost(m);else this.recvMirror(m);
   },
   recvHost(m){
@@ -1145,21 +1298,23 @@ const Net={
         }
         break;
       case 'ready':this.mirrorReady=true;UI.updateStartBar();UI.updateLink();break;
-      case 'ping':this.send({k:'pong',t:m.t,song:Host.st(),playing:Host.state==='play'||Host.state==='count'});break;
+      case 'ping':this.send({k:'pong',t:m.t});break;
       case 'wantAudio':this.sendAudio();break;
       case 'key':
-        if(S.mControl&&(Host.state==='play')){
-          const kind=(m.lane===0||m.lane===2)?'don':'ka';
-          Host.hit(kind,this.rtt/2);
+        if(S.mControl&&Host.state==='play'){
+          Host.hit((m.lane===0||m.lane===2)?'don':'ka');
         }
         break;
     }
   },
   recvMirror(m){
     switch(m.k){
-      case 'welcome':if(!this._hostUp){this._hostUp=true;toast('host connected','good');UI.updateLink();}break;
-      case 'meta':Mir.info=m;UI.guestMeta(m);break;
-      case 'start':Mir.start(m.lead);Game.open('mirror');break;
+      case 'welcome':
+        if(!this._hostUp){this._hostUp=true;toast('host connected','good');UI.updateLink();}
+        break;
+      case 'meta':UI.guestMeta(m);break;
+      // open mirror mode FIRST so Mir.start runs with the right role
+      case 'start':$('#ovResult').hidden=true;Game.open('mirror');Mir.start(m.lead);break;
       case 'resume':Mir.resume(m.lead);break;
       case 'pause':Mir.pause(m.song);break;
       case 'sync':Mir.sync(m);break;
@@ -1167,7 +1322,7 @@ const Net={
       case 'pong':{
         const s=performance.now()-m.t;
         this.rtt=this.rtt?this.rtt*0.8+s*0.2:s;
-        UI.pingTick();break;
+        break;
       }
     }
   },
@@ -1175,26 +1330,26 @@ const Net={
     this.mirrorReady=false;this._audioSent=false;
     this.send({k:'meta',title:obj.title,sub:obj.sub,course:obj.course,level:obj.level,
       n:obj.notes.length,dur:obj.dur,type:obj.type});
-    this.sendBig(JSON.stringify({k:'chartdata',...obj}),'chart');
+    this.sendBytes(new TextEncoder().encode(JSON.stringify({k:'chartdata',...obj})),'chart');
     UI.updateStartBar();
   },
   sendAudio(){
     if(this._audioSent||!Host.audioBytes)return;
     this._audioSent=true;
-    this.sendBytes(new Uint8Array(Host.audioBytes),'audio',Host.song.audio?Host.song.audio.name:'audio');
+    this.sendBytes(new Uint8Array(Host.audioBytes),'audio');
   },
-  async sendBytes(u8,kind,name){
+  async sendBytes(u8,kind){
     const CH=48000,n=Math.max(1,Math.ceil(u8.length/CH));
-    this.send({k:'xfer',kind,n,len:u8.length,name});
+    this.send({k:'xfer',kind,n,len:u8.length});
     for(let i=0;i<n;i++){
+      const part=u8.slice(i*CH,(i+1)*CH);
       if(this.rtc&&this.rtc.open){
         let guard=0;
         while(this.rtc.dc.bufferedAmount>700000&&guard++<400)await sleep(12);
-        this.rtc.dc.send(u8.slice(i*CH,(i+1)*CH));
-      }else if(this.bc)this.bc.postMessage(u8.slice(i*CH,(i+1)*CH));
+        this.rtc.dc.send(part);
+      }else if(this.bc)this.bc.postMessage(part);
     }
   },
-  sendBig(str,kind){this.sendBytes(new TextEncoder().encode(str),kind,'chart');},
   chunkIn(data){
     const u8=data instanceof Uint8Array?data:new Uint8Array(data);
     const x=this.xfer;if(!x)return;
@@ -1217,7 +1372,7 @@ const Net={
   }
 };
 
-// ---------- WebRTC link with compressed manual signalling ----------
+// ---------- WebRTC with compressed manual signalling ----------
 function b64u(u8){let s='';for(let i=0;i<u8.length;i+=0x8000)s+=String.fromCharCode.apply(null,u8.subarray(i,i+0x8000));return btoa(s).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');}
 function unb64u(s){s=s.replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='=';
   const b=atob(s),u=new Uint8Array(b.length);for(let i=0;i<b.length;i++)u[i]=b.charCodeAt(i);return u;}
@@ -1286,7 +1441,7 @@ class RTCLink{
 }
 
 /* ============================================================
-   RENDER — classic taiko view
+   RENDER — classic taiko
    ============================================================ */
 function taikoLayout(W,H){
   const r=clamp(Math.min(W,H)*0.085,24,54);
@@ -1301,27 +1456,21 @@ function drawTaiko(ctx,R,host,t){
   ctx.save();ctx.beginPath();ctx.rect(R.x,R.y,W,H);ctx.clip();ctx.translate(R.x,R.y);
   const L=taikoLayout(W,H),{r,beltY,hitX,rf}=L;
   const K=0.34*S.noteSpeed;
-  // background
   ctx.fillStyle='#1b1622';ctx.fillRect(0,0,W,H);
-  // faint enso circle
   ctx.strokeStyle='rgba(243,231,211,0.05)';ctx.lineWidth=W*0.02;
   ctx.beginPath();ctx.arc(W*0.72,H*0.16,Math.min(W,H)*0.22,0.6,5.6);ctx.stroke();
-  // wood floor
   ctx.fillStyle='#332720';ctx.fillRect(0,beltY+r*1.4,W,H);
   ctx.strokeStyle='rgba(0,0,0,.25)';ctx.lineWidth=1;
   for(let y=beltY+r*1.4+22;y<H;y+=26){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
-  // belt
   ctx.fillStyle='#2b2130';ctx.fillRect(0,beltY-r*1.4,W,r*2.8);
   if(host.gogoOn){ctx.fillStyle='rgba(217,164,65,0.16)';ctx.fillRect(0,beltY-r*1.4,W,r*2.8);}
   ctx.fillStyle=host.gogoOn?'#d9a441':'rgba(217,164,65,.55)';
   ctx.fillRect(0,beltY-r*1.4,W,2);ctx.fillRect(0,beltY+r*1.4-2,W,2);
-  // beat lines
-  if(host.cr){
-    const beats=host.beats||(host.beats=genBeats(host.cr.bpmTl,host.cr.dur));
-    while(host.beatPtr<beats.length&&beats[host.beatPtr]<t-1500)host.beatPtr++;
+  if(host.beats){
+    while(host.beatPtr<host.beats.length&&host.beats[host.beatPtr]<t-1500)host.beatPtr++;
     ctx.strokeStyle='rgba(243,231,211,.09)';ctx.lineWidth=1;
-    for(let i=host.beatPtr;i<beats.length;i++){
-      const bt=beats[i];if(bt>t+W/(K*1.2)+600)break;
+    for(let i=host.beatPtr;i<host.beats.length;i++){
+      const bt=host.beats[i];if(bt>t+W/(K*1.2)+600)break;
       const x=hitX+(host.sp.d(bt)-host.sp.d(t));
       if(x<-20||x>W+20)continue;
       ctx.beginPath();ctx.moveTo(x,beltY-r*1.4);ctx.lineTo(x,beltY+r*1.4);ctx.stroke();
@@ -1330,7 +1479,6 @@ function drawTaiko(ctx,R,host,t){
   const now=performance.now();
   if(host.state!=='idle'&&host.sp){
     const D=tt=>host.sp.d(tt);
-    // rolls
     for(const ro of host.rolls){
       if(ro.e<t-400)continue;
       const x1=hitX+(D(ro.s)-D(t)),x2=hitX+(D(ro.e)-D(t));
@@ -1340,7 +1488,7 @@ function drawTaiko(ctx,R,host,t){
       ctx.strokeStyle='#8a651f';ctx.lineWidth=2;
       ctx.beginPath();ctx.moveTo(a,beltY-r*0.44);ctx.lineTo(b,beltY-r*0.44);
       ctx.moveTo(a,beltY+r*0.44);ctx.lineTo(b,beltY+r*0.44);ctx.stroke();
-      ctx.strokeStyle='rgba(138,101,31,.8)';ctx.lineWidth=2;
+      ctx.strokeStyle='rgba(138,101,31,.8)';
       for(let tt=ro.s+140;tt<ro.e;tt+=140){
         const x=hitX+(D(tt)-D(t));if(x<a||x>b)continue;
         ctx.beginPath();ctx.moveTo(x,beltY-r*0.3);ctx.lineTo(x,beltY+r*0.3);ctx.stroke();
@@ -1348,7 +1496,6 @@ function drawTaiko(ctx,R,host,t){
       if(x1>-30&&x1<W+30){ctx.fillStyle='#f6d98a';rrect(ctx,x1-r*0.32,beltY-r*0.5,r*0.5,r,5);ctx.fill();
         ctx.strokeStyle='#8a651f';ctx.stroke();}
     }
-    // balloons
     for(const b of host.bals){
       if(b.done&&b.got>=b.need)continue;
       const bx=hitX+(D(b.s)-D(t));if(bx<-90)continue;if(bx>W+90)break;
@@ -1364,7 +1511,6 @@ function drawTaiko(ctx,R,host,t){
       ctx.textAlign='center';ctx.textBaseline='middle';
       ctx.fillText(b.need-b.got,bx,by+2);
     }
-    // notes
     const N=host.notes;
     while(host.nPtr<N.length){
       const n=N[host.nPtr];
@@ -1377,9 +1523,7 @@ function drawTaiko(ctx,R,host,t){
       drawTaikoNote(ctx,x,beltY,r,n.k);
     }
   }
-  // drum
   drawDrum(ctx,hitX,beltY,rf,host.drumFx,now);
-  // fx
   for(let i=host.fx.length-1;i>=0;i--){
     const f=host.fx[i],age=now-f.t0;
     if(age>450){host.fx.splice(i,1);continue;}
@@ -1402,7 +1546,6 @@ function drawTaiko(ctx,R,host,t){
       ctx.globalAlpha=1;
     }
   }
-  // combo
   if(host.combo>0){
     const pop=clamp(1-(now-host.comboT0)/220,0,1);
     const sc=1+pop*0.22;
@@ -1414,7 +1557,6 @@ function drawTaiko(ctx,R,host,t){
     ctx.font=`${Math.round(r*0.42)}px DotGothic16`;
     ctx.strokeText('COMBO',cx+2,cy+r*0.5);ctx.fillStyle='rgba(243,231,211,.75)';ctx.fillText('COMBO',cx+2,cy+r*0.5);
   }
-  // judge popup
   if(host.popup){
     const age=now-host.popup.t0;
     if(age<500){
@@ -1429,32 +1571,26 @@ function drawTaiko(ctx,R,host,t){
       ctx.globalAlpha=1;
     }else host.popup=null;
   }
-  // score + acc
   ctx.textAlign='right';ctx.textBaseline='top';
   ctx.font=`${Math.round(r*0.72)}px DotGothic16`;
   ctx.fillStyle='#f3e7d3';
   ctx.fillText(String(host.score).padStart(7,'0'),W-16,12);
   ctx.font=`${Math.round(r*0.4)}px DotGothic16`;ctx.fillStyle='rgba(243,231,211,.6)';
   ctx.fillText((host.acc()*100).toFixed(2)+'%',W-16,14+r*0.8);
-  // gauge
   const gw=Math.min(W*0.3,300),gx=54,gy=H-30;
   ctx.fillStyle='#241c2a';rrect(ctx,gx,gy,gw,13,6);ctx.fill();
   const gp=host.gauge/10000;
   ctx.fillStyle=gp>=0.8?'#d9a441':'#d8452c';
   if(gp>0){rrect(ctx,gx+2,gy+2,Math.max(3,(gw-4)*gp),9,4);ctx.fill();}
   ctx.strokeStyle='rgba(243,231,211,.5)';ctx.lineWidth=1.5;rrect(ctx,gx,gy,gw,13,6);ctx.stroke();
-  // 80% notch
   ctx.strokeStyle='rgba(243,231,211,.4)';ctx.beginPath();ctx.moveTo(gx+gw*0.8,gy-3);ctx.lineTo(gx+gw*0.8,gy+16);ctx.stroke();
-  // soul medal
   ctx.beginPath();ctx.arc(28,gy+6,17,0,7);
   ctx.fillStyle=gp>=0.8?'#d9a441':'#3a3042';ctx.fill();
   ctx.strokeStyle='#f3e7d3';ctx.lineWidth=2;ctx.stroke();
   ctx.fillStyle=gp>=0.8?'#171219':'#f3e7d3';
   ctx.font=`17px DotGothic16`;ctx.textAlign='center';ctx.textBaseline='middle';
   ctx.fillText('魂',28,gy+7);
-  // progress
   if(host.cr){ctx.fillStyle='rgba(217,164,65,.9)';ctx.fillRect(0,0,W*clamp(t/host.cr.dur,0,1),3);}
-  // countdown
   if(t<0&&host.state!=='pause'){
     const n=Math.min(3,Math.ceil(-t/1000));
     ctx.textAlign='center';ctx.textBaseline='middle';
@@ -1486,27 +1622,21 @@ function drawTaikoNote(ctx,x,y,r,k){
   ctx.fillStyle='rgba(255,255,255,.32)';ctx.fill();
 }
 function drawDrum(ctx,x,y,rf,fx,now){
-  // wooden base
   ctx.fillStyle='#54402b';rrect(ctx,x-rf*1.5,y-rf*1.12,rf*3,rf*2.4,rf*0.35);ctx.fill();
   ctx.strokeStyle='rgba(0,0,0,.35)';ctx.lineWidth=2;ctx.stroke();
-  // body
   ctx.beginPath();ctx.arc(x,y,rf*1.14,0,7);ctx.fillStyle='#8e2b1c';ctx.fill();
   ctx.beginPath();ctx.arc(x,y,rf,0,7);ctx.fillStyle='#d8452c';ctx.fill();
   ctx.beginPath();ctx.arc(x,y,rf*0.8,0,7);ctx.fillStyle='#f3e7d3';ctx.fill();
-  // shade crescent
   ctx.beginPath();ctx.arc(x,y,rf*0.76,0.25,Math.PI-0.25);
   ctx.arc(x,y,rf*0.45,Math.PI-0.25,0.25,true);ctx.closePath();
   ctx.fillStyle='rgba(0,0,0,.05)';ctx.fill();
-  // inner ring
   ctx.beginPath();ctx.arc(x,y,rf*0.46,0,7);
   ctx.strokeStyle='#d8452c';ctx.lineWidth=rf*0.07;ctx.stroke();
-  // bolts
   ctx.fillStyle='#d9a441';
   for(let i=0;i<6;i++){
     const a=i/6*6.283+0.5;
     ctx.beginPath();ctx.arc(x+Math.cos(a)*rf*0.9,y+Math.sin(a)*rf*0.9,rf*0.055,0,7);ctx.fill();
   }
-  // press feedback
   if(fx&&now-fx.t0<140){
     const a=1-(now-fx.t0)/140;
     if(fx.k==='don'){
@@ -1521,8 +1651,19 @@ function drawDrum(ctx,x,y,rf,fx,now){
 }
 
 /* ============================================================
-   RENDER — 4K VSRG mirror
+   RENDER — 4K VSRG
    ============================================================ */
+function maniaNote(ctx,cx,y,lw,k){
+  const big=k==='donB'||k==='kaB';
+  const h=lw*(big?0.58:0.42),w=lw-8;
+  rrect(ctx,cx-w/2,y-h/2,w,h,4);
+  ctx.fillStyle=(k==='don'||k==='donB')?'#e2452c':'#4a7fc9';ctx.fill();
+  if(big){ctx.strokeStyle='#f2c14e';ctx.lineWidth=2;ctx.stroke();}
+  ctx.fillStyle='rgba(255,255,255,.35)';
+  rrect(ctx,cx-w/2+2,y-h/2+2,w-4,3,1.5);ctx.fill();
+}
+function NOTE2COL(lane){return lane===0||lane===2?'#e2452c':'#4a7fc9';}
+
 function drawMania(ctx,R,mir,t){
   const W=R.w,H=R.h;
   ctx.save();ctx.beginPath();ctx.rect(R.x,R.y,W,H);ctx.clip();ctx.translate(R.x,R.y);
@@ -1532,15 +1673,13 @@ function drawMania(ctx,R,mir,t){
   const px=S.maniaSpeed;
   const laneX=i=>LX+i*(lw+gap);
   const now=performance.now();
-  // lanes
   for(let i=0;i<4;i++){
     ctx.fillStyle='rgba(243,231,211,0.025)';ctx.fillRect(laneX(i),0,lw,recY);
     ctx.strokeStyle='#332a3f';ctx.lineWidth=1;
     ctx.strokeRect(laneX(i)+0.5,0.5,lw-1,recY-1);
   }
   const ch=mir.chart;
-  if(ch){
-    // beat lines
+  if(ch&&mir._play){
     while(mir.btPtr<mir.beats.length&&mir.beats[mir.btPtr]<t-(H-recY)/px-200)mir.btPtr++;
     ctx.strokeStyle='rgba(243,231,211,.07)';ctx.lineWidth=1;
     for(let j=mir.btPtr;j<mir.beats.length;j++){
@@ -1548,12 +1687,11 @@ function drawMania(ctx,R,mir,t){
       if(y<-20)break;if(y>recY+30)continue;
       ctx.beginPath();ctx.moveTo(LX,y);ctx.lineTo(LX+tot,y);ctx.stroke();
     }
-    // roll LNs (lanes 0 & 1)
     for(const ro of ch.rolls){
       if(ro.e<t-300)continue;
       const yT=recY-(ro.e-t)*px,yB=recY-(ro.s-t)*px;
-      if(yT>H+40)break;
       if(ro.s>t+(recY+60)/px)break;
+      if(yT>H+40)continue;
       for(const ln of [0,1]){
         const cx=laneX(ln)+lw/2;
         ctx.fillStyle='rgba(230,184,76,.92)';
@@ -1567,11 +1705,11 @@ function drawMania(ctx,R,mir,t){
         }
       }
     }
-    // balloon LN (all lanes)
     for(const b of ch.bals){
       if(b.e<t-300)continue;
       const yT=recY-(b.e-t)*px,yB=recY-(b.s-t)*px;
-      if(yT>H+40)break;
+      if(b.s>t+(recY+60)/px)break;
+      if(yT>H+40)continue;
       ctx.fillStyle='rgba(232,122,160,.24)';
       rrect(ctx,LX,Math.min(yT,yB),tot,Math.max(yB-yT,6),8);ctx.fill();
       ctx.strokeStyle='rgba(232,122,160,.8)';ctx.lineWidth=1.5;ctx.stroke();
@@ -1584,7 +1722,6 @@ function drawMania(ctx,R,mir,t){
         ctx.fillText(got.need-got.got,W/2,yB);
       }
     }
-    // notes
     while(mir.nPtr<ch.notes.length&&ch.notes[mir.nPtr].t<t-500)mir.nPtr++;
     for(let i=mir.nPtr;i<ch.notes.length;i++){
       const n=ch.notes[i],y=recY-(n.t-t)*px;
@@ -1596,11 +1733,10 @@ function drawMania(ctx,R,mir,t){
       ctx.globalAlpha=1;
     }
   }
-  // receptors
   const KEYL=['D','F','J','K'];
   for(let i=0;i<4;i++){
     const x=laneX(i),pr=mir.press[i]&&now<mir.press[i].u;
-    if(pr){ // lane flash column
+    if(pr){
       ctx.fillStyle=NOTE2COL(i)+'22';
       ctx.fillRect(x,recY-110,lw,110);
     }
@@ -1611,7 +1747,6 @@ function drawMania(ctx,R,mir,t){
     ctx.font=`12px DotGothic16`;ctx.textAlign='center';ctx.textBaseline='middle';
     ctx.fillText(KEYL[i],x+lw/2,recY+lw*0.52);
   }
-  // combo
   if(mir.combo>1){
     const pop=clamp(1-(now-mir.comboT0)/220,0,1);
     ctx.textAlign='center';ctx.textBaseline='middle';
@@ -1622,7 +1757,6 @@ function drawMania(ctx,R,mir,t){
     ctx.font=`${Math.round(lw*0.2)}px DotGothic16`;
     ctx.fillStyle='rgba(243,231,211,.55)';ctx.fillText('COMBO',W/2,recY-140+lw*0.5);
   }
-  // judge
   if(mir.judge&&now-mir.judge.t0<450){
     const age=now-mir.judge.t0,[txt,col]=JT[mir.judge.j];
     const sc=age<100?0.7+age/100*0.4:1.1-Math.min(0.12,(age-100)/350);
@@ -1634,12 +1768,10 @@ function drawMania(ctx,R,mir,t){
     ctx.fillStyle=col;ctx.fillText(txt,W/2,recY-72);
     ctx.globalAlpha=1;
   }
-  // top stats
   if(ch){
     ctx.textAlign='left';ctx.textBaseline='top';
     ctx.fillStyle='rgba(243,231,211,.6)';ctx.font='12px DotGothic16';
     ctx.fillText(ch.title.slice(0,34)+' · '+ch.course,10,10);
-    // gauge
     ctx.fillStyle='#241c2a';rrect(ctx,10,28,120,7,3);ctx.fill();
     if(mir.gauge>0){ctx.fillStyle=mir.gauge>=0.8?'#d9a441':'#d8452c';
       rrect(ctx,11,29,118*clamp(mir.gauge,0,1),5,2);ctx.fill();}
@@ -1648,12 +1780,10 @@ function drawMania(ctx,R,mir,t){
     ctx.fillText(String(mir.score).padStart(7,'0'),W-10,8);
     ctx.fillStyle='rgba(243,231,211,.55)';ctx.font='11px DotGothic16';
     ctx.fillText((mir.acc*100).toFixed(2)+'%',W-10,26);
-    // progress
     ctx.fillStyle='rgba(217,164,65,.9)';
     ctx.fillRect(0,H-3,W*clamp(t/ch.dur,0,1),3);
   }
-  // countdown
-  if(t<0&&(mir.clockPlaying||mir.ext&&Host.state==='count')){
+  if(t<0&&mir._play){
     const n=Math.min(3,Math.ceil(-t/1000));
     ctx.textAlign='center';ctx.textBaseline='middle';
     ctx.font='64px DotGothic16';
@@ -1663,21 +1793,15 @@ function drawMania(ctx,R,mir,t){
     ctx.font='13px DotGothic16';ctx.fillStyle='#d9a441';
     ctx.fillText('SYNCING WITH HOST',W/2,H*0.32+56);
   }
-  // frame
+  if(Net.role==='mirror'&&!mir._play){
+    ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.font='15px DotGothic16';ctx.fillStyle='rgba(243,231,211,.5)';
+    ctx.fillText('WAITING FOR HOST — 開始待ち',W/2,H*0.3);
+  }
   ctx.strokeStyle='rgba(217,164,65,.3)';ctx.lineWidth=1;
   ctx.strokeRect(0.5,0.5,W-1,H-1);
   ctx.restore();
 }
-function maniaNote(ctx,cx,y,lw,k){
-  const big=k==='donB'||k==='kaB';
-  const h=lw*(big?0.58:0.42),w=lw-8;
-  rrect(ctx,cx-w/2,y-h/2,w,h,4);
-  ctx.fillStyle=(k==='don'||k==='donB')?'#e2452c':'#4a7fc9';ctx.fill();
-  if(big){ctx.strokeStyle='#f2c14e';ctx.lineWidth=2;ctx.stroke();}
-  ctx.fillStyle='rgba(255,255,255,.35)';
-  rrect(ctx,cx-w/2+2,y-h/2+2,w-4,3,1.5);ctx.fill();
-}
-function NOTE2COL(lane){return lane===0||lane===2?'#e2452c':'#4a7fc9';}
 
 /* ============================================================
    GAME SCREEN + LOOP
@@ -1685,7 +1809,7 @@ function NOTE2COL(lane){return lane===0||lane===2?'#e2452c':'#4a7fc9';}
 const cv=$('#cv'),ctx=cv.getContext('2d');
 const Game={
   active:false,role:'host',view:'taiko',
-  dualOn(){return this.role==='host'&&this.active&&this.view==='dual'&&MirL.chart;},
+  dualOn(){return this.role==='host'&&this.active&&this.view!=='taiko'&&Mir.chart;},
   open(role){
     this.role=role;this.active=true;
     $('#home').hidden=true;$('#game').hidden=false;
@@ -1693,10 +1817,12 @@ const Game={
     $('#btnView').hidden=role!=='host'||innerWidth<1150;
     $('#pingChip').hidden=role!=='mirror';
     if(role==='host')this.view=(innerWidth>=1150&&S.dual)?'dual':'taiko';
+    $('#btnView').innerHTML=ic(this.view==='taiko'?'cols':this.view==='dual'?'drum':'bars');
     $('#hudTitle').textContent=role==='host'&&Host.song?Host.song.title:(Mir.chart?Mir.chart.title:'');
     setBadge(role==='host'&&Host.cr?Host.cr:(Mir.chart?{id:-1,name:Mir.chart.course}:null));
     resize();
     if(role==='host')wakeLock(true);
+    requestAnimationFrame(loop);
   },
   close(){
     this.active=false;wakeLock(false);
@@ -1708,6 +1834,7 @@ const Game={
     if(this.role!=='host')return;
     this.view=this.view==='taiko'?(innerWidth>=1150?'dual':'mania'):(this.view==='dual'?'mania':'taiko');
     $('#btnView').innerHTML=ic(this.view==='taiko'?'cols':this.view==='dual'?'drum':'bars');
+    if(this.view!=='taiko'&&Host.state==='play')Mir._play=true;
   }
 };
 function setBadge(cr){
@@ -1731,15 +1858,15 @@ function loop(){
   if(Game.role==='host'){
     Host.update();
     const t=Host.st();
-    if(Game.view==='dual'&&MirL.chart){
+    if(Game.view==='dual'&&Mir.chart){
       const split=Math.round(W*0.55);
       drawTaiko(ctx,{x:0,y:0,w:split,h:H},Host,t);
-      MirL.update(t);
-      drawMania(ctx,{x:split+1,y:0,w:W-split-1,h:H},MirL,t);
+      Mir.update(t);
+      drawMania(ctx,{x:split+1,y:0,w:W-split-1,h:H},Mir,t);
       ctx.fillStyle='rgba(217,164,65,.5)';ctx.fillRect(split,0,2,H);
-    }else if(Game.view==='mania'&&MirL.chart){
-      MirL.update(t);
-      drawMania(ctx,{x:0,y:0,w:W,h:H},MirL,t);
+    }else if(Game.view==='mania'&&Mir.chart){
+      Mir.update(t);
+      drawMania(ctx,{x:0,y:0,w:W,h:H},Mir,t);
     }else{
       drawTaiko(ctx,{x:0,y:0,w:W,h:H},Host,t);
     }
@@ -1752,11 +1879,9 @@ function loop(){
   requestAnimationFrame(loop);
 }
 
-// host touch input → drum zones
 cv.addEventListener('pointerdown',e=>{
-  if(!Game.active)return;
+  if(!Game.active||Game.role!=='host')return;
   A.ensure();
-  if(Game.role!=='host')return;
   const L=taikoLayout(innerWidth,innerHeight);
   const d=Math.hypot(e.clientX-L.hitX,e.clientY-L.beltY);
   if(d<L.rf*0.8)Host.hit('don');
@@ -1777,77 +1902,95 @@ addEventListener('keydown',e=>{
     if(lane!==undefined){Mir.key(lane);e.preventDefault();}
   }
 });
-// logic tick even when rAF throttled (screen off / hidden tab)
 setInterval(()=>{if(Game.active&&Game.role==='host')Host.update();},60);
 
 /* ============================================================
-   UI GLUE
+   UI
    ============================================================ */
 const UI={
+  sel:null,
+  ghStatus(msg,kind){const el=$('#ghStatus');if(!el)return;el.textContent=msg;el.className=kind||'';},
   renderLibrary(){
-    const el=$('#library');el.innerHTML='';
+    const el=$('#library');if(!el)return;
+    el.innerHTML='';
+    if($('#songCount'))$('#songCount').textContent=Lib.songs.length?Lib.songs.length+' songs':'';
     if(!Lib.songs.length){
-      el.innerHTML=`<div class="status" style="padding:6px 2px">nothing loaded yet — the songs you add appear here.</div>`;
+      el.innerHTML='<div class="empty">nothing here yet — load a github repo above, or add local files.</div>';
       return;
     }
     for(const sg of Lib.songs){
       const d=document.createElement('div');d.className='song';
-      const wv=sg.audio?`<i>♪ ${sg.audio.name}</i>`:`<i class="none">no audio found — metronome mode</i>`;
-      d.innerHTML=`<div class="t"><b>${esc(sg.title)}</b><span class="chip">${sg.type}</span>
+      if(sg.deferred){
+        const sz=sg.size?(sg.size/1048576).toFixed(1)+' MB':'';
+        d.innerHTML=`<div class="t"><b>${esc(sg.title)}</b><span class="chip">OSZ</span>
+          ${sg.dir?`<span class="chip">${esc(sg.dir.split('/').pop().slice(0,24))}</span>`:''}
+          <button class="del" title="remove">${ic('x',15)}</button></div>
+          <div class="sub">${sz?sz+' · ':''}archive — tap to unpack (diffs + audio load on demand)</div>
+          <div class="courses"><button class="course-btn gold oszgo">${sg._loading?'UNPACKING…':'UNPACK'}</button></div>`;
+        d.querySelector('.del').onclick=()=>Lib.remove(sg.id);
+        d.querySelector('.oszgo').onclick=()=>GH.loadOsz(sg);
+        el.append(d);continue;
+      }
+      const hasAudio=sg.src==='zip'?!!sg.audioName:(sg.src==='gh'?!!sg.audioUrl:!!sg.audioFile);
+      const wv=hasAudio?'<i>♪ '+esc(sg.audioName||'audio')+'</i>':'<i class="none">no audio — metronome</i>';
+      d.innerHTML=`<div class="t"><b>${esc(sg.title)}</b>
+        ${sg.dir?`<span class="chip">${esc(sg.dir.split('/').pop().slice(0,24))}</span>`:''}
+        <span class="chip">${sg.type}</span>
         <button class="del" title="remove">${ic('x',15)}</button></div>
-        <div class="wave">${esc(sg.sub||'')} · ${wv}</div>
+        <div class="sub">${esc(sg.sub||'')} · ${wv}</div>
         <div class="courses">${sg.courses.map((c,i)=>
           `<button class="course-btn" data-s="${sg.id}" data-c="${i}">
             <span class="badge" style="background:${c.id>=0?CCOL[c.id]:'#7c8894'}">${esc(c.name)}</span>
             ${c.level?`<span class="stars">${'★'.repeat(Math.min(c.level,10))}</span>`:''}
-            <span style="color:var(--dim)">${c.n} notes</span></button>`).join('')}</div>`;
+            <span style="color:var(--dim)">${c.n}</span></button>`).join('')}</div>`;
       d.querySelector('.del').onclick=()=>Lib.remove(sg.id);
       d.querySelectorAll('.course-btn').forEach(b=>b.onclick=()=>UI.selectCourse(sg,+b.dataset.c));
       el.append(d);
     }
   },
-  sel:null,
   selectCourse(sg,ci){
+    if(!sg.courses[ci])return;
     UI.sel={sg,ci};
     $$('.course-btn').forEach(b=>b.classList.toggle('sel',
       UI.sel&&+b.dataset.s===sg.id&&+b.dataset.c===ci));
     Host.load(sg,ci);
   },
   updateStartBar(){
-    const bar=$('#startBar');
-    if(!UI.sel||Host.state==='play'||Host.state==='count'){bar.hidden=!UI.sel||Host.state==='play';if(!UI.sel)return;}
+    const bar=$('#startBar'),btn=$('#btnStart');
+    if(!bar||!btn)return;               // hard guard — never crash again
+    if(!UI.sel||!Host.cr){bar.hidden=true;return;}
+    bar.hidden=false;
     const cr=Host.cr;
-    $('#sbTitle').textContent=Host.song.title;
-    $('#sbSub').textContent=`${cr.name}${cr.level?' · '+'★'.repeat(Math.min(cr.level,10)):''} · ${cr.n} notes · `+
-      (Host.audioBuf?'audio ready':Host.audioBuf===undefined?'decoding audio…':'no audio — metronome');
-    const btn=$('#btnStart');
-    const needSend=Net.linked()&&!Net.mirrorReady;
+    if($('#sbTitle'))$('#sbTitle').textContent=Host.song.title;
+    if($('#sbSub'))$('#sbSub').textContent=
+      `${cr.name}${cr.level?' · '+'★'.repeat(Math.min(cr.level,10)):''} · ${cr.n} notes · `+
+      (Host.audioBuf?'audio ready':Host.decoding()?'loading audio…':'metronome');
+    const needSend=Net.role==='host'&&Net.linked()&&!Net.mirrorReady;
     btn.disabled=!Host.ready()||needSend;
-    btn.textContent=needSend?'SENDING TO MIRROR…':(!Host.ready()?'LOADING…':'START');
-    btn.onclick=()=>{if(!btn.disabled){Game.open('host');Host.begin();}};
+    btn.textContent=needSend?'SENDING TO MIRROR…':(Host.decoding()?'LOADING AUDIO…':'START');
   },
   guestMeta(m){
-    $('#gCard').hidden=false;
-    $('#gTitle').textContent=m.title;
-    $('#gMeta').textContent=`${m.course} · ${m.n} notes · from host`;
-    $('#gWait').textContent='song received — waiting for the host to start…';
+    if($('#gWait'))$('#gWait').textContent='song received — waiting for the host to start…';
   },
-  guestChart(ch){$('#hudTitle').textContent=ch.title;setBadge({id:-1,name:ch.course});},
+  guestChart(ch){
+    if($('#hudTitle'))$('#hudTitle').textContent=ch.title;
+    setBadge({id:-1,name:ch.course});
+  },
   updateLink(){
     const hostMode=Net.role==='host';
     const dot=hostMode?$('#dotHost'):$('#dotGuest');
     const st=hostMode?$('#linkStatus'):$('#linkStatusG');
-    if(Net.linked()){
-      dot.className='dot on';
-      st.textContent=hostMode?`mirror connected (${Net.rtc&&Net.rtc.open?'WebRTC':'same device'})`:'host connected — ready';
-    }else{
-      dot.className='dot '+(this._anyActivity()?'wait':'');
-      st.textContent=hostMode?'no mirror connected — solo play works fine too':'waiting for a host…';
+    if(dot&&st){
+      if(Net.linked()){
+        dot.className='dot on';
+        st.textContent=hostMode?'mirror connected'+(Net.rtc&&Net.rtc.open?' (WebRTC)':''):'host connected — ready';
+      }else{
+        dot.className='dot';
+        st.textContent=hostMode?'not linked — solo play works fine':'waiting for a host…';
+      }
     }
-    this.updateStartBar();
+    UI.updateStartBar();
   },
-  _anyActivity(){return false;},
-  pingTick(){/* chip updated in loop */},
   showResults(res,mirror){
     const gold=['SS','S'].includes(res.rank);
     const rows=[
@@ -1874,64 +2017,55 @@ const UI={
     }
   }
 };
-function esc(s){return (''+s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
 
-/* ---------- home wiring ---------- */
- $('#dropIc').innerHTML=ic('up',30);
- $('#roleHost').insertAdjacentHTML('beforeend',ic('drum',26));
- $('#roleGuest').insertAdjacentHTML('beforeend',ic('bars',26));
- $('#btnFiles').innerHTML=ic('up',15)+' files';
- $('#btnDir').innerHTML=ic('folder',15)+' folder';
- $('#btnView').innerHTML=ic('cols');
- $('#btnPause').innerHTML=ic('pause');
- $('#lkIcoH').insertAdjacentHTML('afterbegin',ic('link',16));
- $('#btnInvite').innerHTML=ic('link',15)+' 1 · CREATE INVITE CODE';
- $('#btnAccept').innerHTML=ic('link',15)+' 3 · LINK';
- $('#btnReply').innerHTML=ic('link',15)+' 2 · GENERATE REPLY';
- $('#copyInvite').innerHTML=ic('copy',15)+' copy invite code';
- $('#copyReply').innerHTML=ic('copy',15)+' copy reply code';
+/* ---------- wiring (safe helpers, order no longer matters) ---------- */
+setHTML('btnFiles',ic('folder',14)+' local files');
+setHTML('btnDir',ic('folder',14)+' local folder');
+setHTML('btnView',ic('cols'));
+setHTML('btnPause',ic('pause'));
 
- $('#roleHost').onclick=()=>{setRole('host');};
- $('#roleGuest').onclick=()=>{setRole('guest');};
+on('roleHost','click',()=>setRole('host'));
+on('roleGuest','click',()=>setRole('guest'));
 function setRole(r){
   $('#roleHost').classList.toggle('sel',r==='host');
   $('#roleGuest').classList.toggle('sel',r==='guest');
   $('#hostPanel').hidden=r!=='host';
   $('#guestPanel').hidden=r!=='guest';
+  if(Net.rtc){try{Net.rtc.pc.close();}catch(e){} Net.rtc=null;Net.mirrorUp=false;Net.mirrorReady=false;}
   Net.init(r);
 }
-// file inputs
- $('#btnFiles').onclick=e=>{e.stopPropagation();$('#fileIn').click();};
- $('#btnDir').onclick=e=>{e.stopPropagation();$('#dirIn').click();};
- $('#drop').onclick=()=>$('#fileIn').click();
- $('#fileIn').onchange=e=>{Lib.addFiles([...e.target.files]);e.target.value='';};
- $('#dirIn').onchange=e=>{Lib.addFiles([...e.target.files]);e.target.value='';};
-const dz=$('#drop');
-['dragover','dragenter'].forEach(ev=>dz.addEventListener(ev,e=>{e.preventDefault();dz.classList.add('over');}));
-['dragleave','drop'].forEach(ev=>dz.addEventListener(ev,e=>{e.preventDefault();dz.classList.remove('over');}));
-dz.addEventListener('drop',e=>Lib.addFiles([...e.dataTransfer.files]));
 
-// link mode segments
- $$('#segHost button,#segGuest button').forEach(b=>b.onclick=()=>{
+on('btnFiles','click',e=>{e.stopPropagation();$('#fileIn').click();});
+on('btnDir','click',e=>{e.stopPropagation();$('#dirIn').click();});
+on('fileIn','change',e=>{Lib.addFiles([...e.target.files]);e.target.value='';});
+on('dirIn','change',e=>{Lib.addFiles([...e.target.files]);e.target.value='';});
+['dragover','dragenter'].forEach(ev=>document.body.addEventListener(ev,e=>e.preventDefault()));
+document.body.addEventListener('drop',e=>{e.preventDefault();if(e.dataTransfer&&e.dataTransfer.files.length)Lib.addFiles([...e.dataTransfer.files]);});
+
+ $$('#segHost button,#segGuest button').forEach(b=>b.addEventListener('click',()=>{
   const seg=b.parentElement;
   seg.querySelectorAll('button').forEach(x=>x.classList.toggle('sel',x===b));
   const card=seg.parentElement;
-  card.querySelector('.lm-bc').hidden=b.dataset.lm!=='bc';
-  card.querySelector('.lm-rtc').hidden=b.dataset.lm!=='rtc';
-});
-// host rtc flow
- $('#btnInvite').onclick=async()=>{
-  $('#btnInvite').disabled=true;toast('gathering connection candidates…');
+  const bc=card.querySelector('.lm-bc'),rtc=card.querySelector('.lm-rtc');
+  if(bc)bc.hidden=b.dataset.lm!=='bc';
+  if(rtc)rtc.hidden=b.dataset.lm!=='rtc';
+}));
+
+on('btnGh','click',()=>GH.load($('#ghIn').value));
+on('ghIn','keydown',e=>{if(e.key==='Enter')GH.load($('#ghIn').value);});
+
+on('btnInvite','click',async()=>{
+  const b=$('#btnInvite');b.disabled=true;toast('gathering connection candidates…');
   try{
     Net.rtc=new RTCLink();
     const code=await Net.rtc.invite();
     $('#inviteOut').value=code;$('#inviteOut').hidden=false;
     $('#copyInvite').hidden=false;
   }catch(e){toast('could not create invite: '+e.message,'bad');}
-  $('#btnInvite').disabled=false;
-};
- $('#copyInvite').onclick=()=>copyText($('#inviteOut').value);
- $('#btnAccept').onclick=async()=>{
+  b.disabled=false;
+});
+on('copyInvite','click',()=>copyText($('#inviteOut').value));
+on('btnAccept','click',async()=>{
   const c=$('#answerIn').value.trim();
   if(!c)return toast('paste the reply code first','bad');
   try{
@@ -1939,72 +2073,86 @@ dz.addEventListener('drop',e=>Lib.addFiles([...e.dataTransfer.files]));
     await Net.rtc.accept(c);
     toast('linking…');
   }catch(e){toast('bad reply code: '+e.message,'bad');}
-};
-// guest rtc flow
- $('#btnReply').onclick=async()=>{
+});
+on('btnReply','click',async()=>{
   const c=$('#inviteIn').value.trim();
   if(!c)return toast('paste the invite code first','bad');
-  $('#btnReply').disabled=true;toast('generating reply…');
+  const b=$('#btnReply');b.disabled=true;toast('generating reply…');
   try{
     Net.rtc=new RTCLink();
     const reply=await Net.rtc.join(c);
     $('#replyOut').value=reply;$('#replyOut').hidden=false;
     $('#copyReply').hidden=false;
   }catch(e){toast('bad invite code: '+e.message,'bad');}
-  $('#btnReply').disabled=false;
-};
- $('#copyReply').onclick=()=>copyText($('#replyOut').value);
+  b.disabled=false;
+});
+on('copyReply','click',()=>copyText($('#replyOut').value));
 
-// settings cards
 function fillOpts(){
-  const hostSets=SLIDERS.filter(s=>['noteSpeed','aOff','inOff'].includes(s[0])).map(s=>sliderHTML(s[0])).join('')
-    +`<div class="subhead">MIRROR PERMISSIONS</div>`
-    +toggleHTML('mControl','let the 4K mirror's keys control this game')
-    +toggleHTML('dual','dual view on wide screens (taiko + 4K side by side)');
-  $('#optHost').innerHTML=hostSets;
-  $('#optGuest').innerHTML=SLIDERS.filter(s=>['maniaSpeed','gAudioOff'].includes(s[0])).map(s=>sliderHTML(s[0])).join('')
-    +`<div class="subhead">MIRROR BEHAVIOUR</div>`
-    +toggleHTML('mKeySnd','key tap sounds on this device')
-    +toggleHTML('mMusic','also play the music here (adds latency — off recommended)');
-  bindControls($('#optHost'),k=>{
-    if(k==='noteSpeed')Host.rebuildSpeed();
-    if(k==='dual'&&Game.active)$('#btnView').hidden=innerWidth<1150;
-  });
-  bindControls($('#optGuest'),k=>{
-    if(k==='mMusic'&&S.mMusic&&Net.linked())Net.send({k:'wantAudio',on:true});
-  });
+  const oh=$('#optHost'),og=$('#optGuest');
+  if(oh){
+    oh.innerHTML=
+      sliderHTML('noteSpeed')+sliderHTML('aOff')+sliderHTML('inOff')
+      +`<div class="hint" style="margin-top:12px">audio offset fixes drift against the song; input offset trims your taps.</div>`
+      +toggleHTML('mControl','4K mirror keys can play this song')
+      +toggleHTML('dual','wide screens: taiko + 4K side by side');
+    bindControls(oh,k=>{if(k==='noteSpeed'&&Host.cr)Host.sp=makeSpeed(Host.cr.speed,0.34*S.noteSpeed);});
+  }
+  if(og){
+    og.innerHTML=
+      sliderHTML('maniaSpeed')+sliderHTML('gAudioOff')
+      +toggleHTML('mKeySnd','tap sounds on key presses')
+      +toggleHTML('mMusic','play music here too (adds latency)');
+    bindControls(og,k=>{
+      if(k==='mMusic'&&S.mMusic&&Net.linked()&&Net.role==='mirror')Net.send({k:'wantAudio'});
+    });
+  }
 }
 fillOpts();
 function refreshPauseOpts(){
-  const el=$('#pauseOpts');
+  const el=$('#pauseOpts');if(!el)return;
   el.innerHTML=sliderHTML('noteSpeed')+sliderHTML('aOff')+sliderHTML('inOff');
-  bindControls(el,k=>{if(k==='noteSpeed')Host.rebuildSpeed();});
+  bindControls(el,k=>{if(k==='noteSpeed'&&Host.cr)Host.sp=makeSpeed(Host.cr.speed,0.34*S.noteSpeed);});
 }
- $('#btnResume').onclick=()=>Host.resume();
- $('#btnRetry').onclick=()=>{$('#ovPause').hidden=true;Host.begin();};
- $('#btnQuit').onclick=()=>Host.quit();
- $('#btnPause').onclick=()=>{Host.state==='pause'?Host.resume():Host.pause();};
- $('#btnView').onclick=()=>Game.cycleView();
+on('btnStart','click',()=>{
+  const b=$('#btnStart');
+  if(b.disabled)return;
+  Game.open('host');Host.begin();
+});
+on('btnResume','click',()=>Host.resume());
+on('btnRetry','click',()=>{$('#ovPause').hidden=true;Host.begin();});
+on('btnQuit','click',()=>Host.quit());
+on('btnPause','click',()=>{Host.state==='pause'?Host.resume():Host.pause();});
+on('btnView','click',()=>Game.cycleView());
 
-// hero drum
-const heroDrum=$('#heroDrum');
-heroDrum.addEventListener('pointerdown',e=>{
+on('heroDrum','pointerdown',e=>{
   A.ensure();
-  const r=heroDrum.getBoundingClientRect();
+  const r=$('#heroDrum').getBoundingClientRect();
   const cx=r.left+r.width/2,cy=r.top+r.height/2;
   const d=Math.hypot(e.clientX-cx,e.clientY-cy);
   const don=d<r.width*0.33;
   don?A.don(false,.8):A.ka(false,.8);
   const rip=document.createElement('span');rip.className='ripple';
   rip.style.left=(e.clientX-cx)+'px';rip.style.top=(e.clientY-cy)+'px';
-  heroDrum.append(rip);setTimeout(()=>rip.remove(),520);
+  $('#heroDrum').append(rip);setTimeout(()=>rip.remove(),520);
   const fp=document.createElement('span');fp.className='fpop';
   fp.textContent=don?'ドン!':'カッ!';
   fp.style.left=(e.clientX-cx)+'px';fp.style.top=(e.clientY-cy-26)+'px';
-  heroDrum.append(fp);setTimeout(()=>fp.remove(),620);
+  $('#heroDrum').append(fp);setTimeout(()=>fp.remove(),620);
 });
 
-// go
+// auto-load remembered repo (prefilled when hosted on github.io)
+try{
+  if(location.hostname.endsWith('github.io')){
+    const seg=location.pathname.split('/').filter(Boolean);
+    if(seg.length>=2)$('#ghIn').value=seg[0]+'/'+seg[1];
+  }
+  const saved=localStorage.getItem('tl-repo');
+  if(saved&&!$('#ghIn').value)$('#ghIn').value=saved;
+  if($('#ghIn').value)GH.load($('#ghIn').value);
+}catch(e){}
+
+setRole('host');
 UI.renderLibrary();
 document.fonts&&document.fonts.load('20px DotGothic16','良魂').catch(()=>{});
 </script>
